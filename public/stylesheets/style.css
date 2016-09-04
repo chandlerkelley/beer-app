@@ -1,8 +1,108 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	font-family: "Helvetica Neue", "Helvetica", sans-serif;
+	display: flex;
+	flex-direction: column;
 }
 
-a {
-  color: #00B7FF;
+header {
+	display: flex;
+	height: 40px;
+}
+
+main {
+	background: linear-gradient(to bottom, #ffc044, #fc9014);
+	color: #fff;
+}
+.search-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.search-title {
+	font-size: 25px;
+}
+
+.search-bar {
+	position: relative;
+	display: inline-block;
+	width: 80%;
+}
+
+#search-icon {
+	position: absolute;
+	/*top: 10px;*/
+	right: 10px;
+	color: #ffc044;
+	margin: 0;
+	/*font-size: 30px;*/
+}
+
+input {
+	font-size: 30px;
+	border-radius: 20px;
+	text-indent: 20px;
+	text-indent-right: 40px;
+	width: 100%;
+}
+
+.button-container {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.main-button {
+	width: 80%;
+	height: 75px;
+	border: 3px solid #fff;
+	border-radius: 40px;
+	margin: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.button-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.material-icons {
+	font-family: 'Material Icons';
+	font-weight: normal;
+	font-style: normal;
+	font-size: 40px;
+	display: inline-block;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+	-moz-osx-font-smoothing: grayscale;
+	font-feature-settings: 'liga';
+	margin: 10px;
+}
+
+footer {
+	height: 40px;
+}
+
+.footer-para {
+	text-align: right;
+}
+
+@media (min-width: 700px) {
+	.main-button {
+		width: 40%;
+	}
+
+	.search-bar {
+		width: 40%;
+	}
 }
