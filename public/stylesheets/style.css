@@ -2,31 +2,59 @@ body {
 	font-family: "Helvetica Neue", "Helvetica", sans-serif;
 	display: flex;
 	flex-direction: column;
+	color:#fff;
+}
+
+button:focus {
+	outline: 0;
+}
+
+input:focus {
+	outline: 0;
+}
+
+a {
+	color: white;
 }
 
 header {
 	display: flex;
+	justify-content: flex-end;
+	align-items: center;
 	height: 40px;
+	background-color: #C5C5c5;
+}
+
+.app-name {
+	margin-right: auto;
+	margin-left: 40px;
+}
+
+.nav-link {
+	margin-right: 40px;
 }
 
 main {
 	background: linear-gradient(to bottom, #ffc044, #fc9014);
 	color: #fff;
 }
+
 .search-container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	width: 100%;
 }
 
 .search-title {
 	font-size: 25px;
 }
 
-.search-bar {
+#search-bar {
 	position: relative;
 	display: inline-block;
-	width: 80%;
+	width: 60%;
+	transition: 1s;
 }
 
 #search-icon {
@@ -44,6 +72,7 @@ input {
 	text-indent: 20px;
 	text-indent-right: 40px;
 	width: 100%;
+	border: 2px solid #fff;
 }
 
 .button-container {
@@ -52,15 +81,29 @@ input {
 	flex-wrap: wrap;
 }
 
-.main-button {
-	width: 80%;
-	height: 75px;
+.btn {
 	border: 3px solid #fff;
 	border-radius: 40px;
 	margin: 10px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	cursor: pointer;
+}
+
+.anim {
+	animation: button-anim 0.7s forwards;
+}
+
+
+.new-bar-button {
+	height: 50px;
+	width: 60%;
+}
+
+.main-button {
+	height: 75px;
+	width: 80%;
 }
 
 .button-content {
@@ -91,10 +134,22 @@ input {
 
 footer {
 	height: 40px;
+	background-color: #C5C5C5;
 }
 
 .footer-para {
 	text-align: right;
+}
+
+@keyframes button-anim {
+	0% {
+		background: rgba(255,255,255,0);
+	}
+	50% {
+		background: rgba(255,255,255,.4);	}
+	100% {
+		background: rgba(255,255,255,0);
+	}
 }
 
 @media (min-width: 700px) {
@@ -102,7 +157,11 @@ footer {
 		width: 40%;
 	}
 
-	.search-bar {
-		width: 40%;
+	.new-bar-button {
+		width: 30%;
 	}
+
+	/*#search-bar {
+		width: 40%;
+	}*/
 }
