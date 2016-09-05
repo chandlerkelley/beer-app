@@ -5,16 +5,17 @@ $(function() {
 	var $searchBar = $("#search-bar")
 
 	$btn.click(function() {
-		$(this).toggleClass("anim");
+		$(this).addClass("anim");
+		setTimeout(() => {$(this).removeClass("anim") }, 750);
 	})
 
 	$input.focus(function() {
 		console.log("Focus on input!");
-		$searchBar.css("width", "70%");
+		$searchBar.css("width", "60%");
 	})
 
 	$input.focusout(function() {
 		console.log("Focus out of input!");
-		$searchBar.css("width", "60%");
+		$searchBar.css("width", "55%");
 	})
 });

@@ -15,23 +15,31 @@ input:focus {
 
 a {
 	color: white;
+	text-decoration: none;
 }
 
 header {
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-	height: 40px;
+	/*height: 40px;*/
 	background-color: #C5C5c5;
 }
 
 .app-name {
 	margin-right: auto;
-	margin-left: 40px;
+	padding: 15px 20px;
 }
 
 .nav-link {
-	margin-right: 40px;
+	/*margin-right: 40px;*/
+	padding: 15px 20px;
+}
+
+.nav-link:hover {
+	/*text-decoration: underline;*/
+	background-color: white;
+	color: #c5c5c5;
 }
 
 main {
@@ -53,7 +61,7 @@ main {
 #search-bar {
 	position: relative;
 	display: inline-block;
-	width: 60%;
+	width: 55%;
 	transition: 1s;
 }
 
@@ -87,23 +95,23 @@ input {
 	margin: 10px;
 	display: flex;
 	align-items: center;
-	justify-content: center;
 	cursor: pointer;
 }
 
 .anim {
-	animation: button-anim 0.7s forwards;
-}
-
-
-.new-bar-button {
-	height: 50px;
-	width: 60%;
+	animation: button-anim 0.75s forwards;
 }
 
 .main-button {
 	height: 75px;
 	width: 80%;
+	justify-content: space-between;
+}
+
+.new-bar-button {
+	height: 50px;
+	width: 60%;
+	justify-content: center;
 }
 
 .button-content {
@@ -146,13 +154,14 @@ footer {
 		background: rgba(255,255,255,0);
 	}
 	50% {
-		background: rgba(255,255,255,.4);	}
+		background: rgba(255,255,255,.4);
+	}
 	100% {
 		background: rgba(255,255,255,0);
 	}
 }
 
-@media (min-width: 700px) {
+@media (min-width: 650px) {
 	.main-button {
 		width: 40%;
 	}
@@ -160,8 +169,4 @@ footer {
 	.new-bar-button {
 		width: 30%;
 	}
-
-	/*#search-bar {
-		width: 40%;
-	}*/
 }
