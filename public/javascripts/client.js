@@ -9,6 +9,14 @@ angular.module("whatsOnTap", ["ui.router"])
 		url: "/home",
 		template: "<home></home>"
 	})
+	.state("signup", {
+		url: "/signup",
+		template: "<signup></signup>"
+	})
+	.state("login", {
+		url: "/login",
+		template: "<login></login>"
+	})
 })
 
 

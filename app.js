@@ -6,12 +6,14 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require('passport'); //added for passport
 var session = require('express-session');
-var flash = require('connect-flash');  //^^added for passport
+var mongoose = require("mongoose");
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+
+mongoose.connect("mongodb://localhost/beerapp")
 
 //added for passport
 app.use(session({ secret: 'WDI Rocks!',
@@ -19,7 +21,6 @@ app.use(session({ secret: 'WDI Rocks!',
                   saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(flash());
 
 require('./config/passport/passport')(passport);
 
