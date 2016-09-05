@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title><%= title %></title>
+	<title>What's On Tap?</title>
 	<link rel="stylesheet" href="/stylesheets/reset.css" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="/stylesheets/style.css" />
 	<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script> 
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+	<script type="text/javascript" src="/javascripts/client.js" ></script> 
 	<script type="text/javascript" src="/javascripts/script.js" ></script>
 </head>
-<body>
+<body ng-app="whatsOnTap">
 	<header>
 		<a class="app-name" href="#">What's On Tap?</a>
 		<a class="nav-link" href="#">Log In</a>
 		<a class="nav-link" href="#">Sign Up</a>
 	</header>
-	<main>
+	<main ng-controller="controller as $ctrl">
 		<div class="search-container">
 			<h2 class="search-title">search by beer or bar</h2>
 			<div id="search-bar">
@@ -28,46 +29,16 @@
 		</div>
 		<div class="button-container">
 			
-			<div class="main-button btn">
+			<div ng-repeat="bar in $ctrl.bars | limitTo:6:0" class="main-button btn"> 
+				<!-- Make the "1" in the limitTo above a value that comes from the page number -->
 				<i class="material-icons">store_mall_directory</i>
 				<div class="button-content">
-					<h3>Bar Name</h3>
-					<p>Bar Neighborhood</p>
+					<h3>{{bar.name}}</h3>
+					<p>{{bar.neighborhood}}</p>
 				</div>
 				<i class="material-icons">navigate_next</i>
 			</div>
-			<div class="main-button btn">
-				<i class="material-icons">store_mall_directory</i>
-				<div class="button-content">
-					<h3>Bar Name</h3>
-					<p>Bar Neighborhood</p>
-				</div>
-				<i class="material-icons">navigate_next</i>
-			</div>
-			<div class="main-button btn">
-				<i class="material-icons">store_mall_directory</i>
-				<div class="button-content">
-					<h3>Bar Name</h3>
-					<p>Bar Neighborhood</p>
-				</div>
-				<i class="material-icons">navigate_next</i>
-			</div>
-			<div class="main-button btn">
-				<i class="material-icons">store_mall_directory</i>
-				<div class="button-content">
-					<h3>Bar Name</h3>
-					<p>Bar Neighborhood</p>
-				</div>
-				<i class="material-icons">navigate_next</i>
-			</div>
-			<div class="main-button btn">
-				<i class="material-icons">store_mall_directory</i>
-				<div class="button-content">
-					<h3>Bar Name</h3>
-					<p>Bar Neighborhood</p>
-				</div>
-				<i class="material-icons">navigate_next</i>
-			</div>
+			
 		</div>
 	</main>
 	<footer>
