@@ -6,9 +6,9 @@ var barSchema = new mongoose.Schema({
   neighborhood: { type: String, required: false },
   hours: { type: String, required: true },
   beers: [
-          brewery: String, required: true,
-          beer: String, required: true
-  ]
+          {brewery: String, required: true},
+          {beer: String, required: true}
+  ],
   user:      { type: mongoose.Schema.Types.ObjectId, ref: 'User'}
   },
   { timestamps: true }  // createdAt, updatedAt
