@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var barSchema = new mongoose.Schema({
   name:     { type: String,  required: true },
-  adress: { type: String, required: true },
+  address: { type: String, required: true },
   neighborhood: { type: String, required: false },
   hours: { type: String, required: true },
   beers: [
