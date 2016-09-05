@@ -4,11 +4,30 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var passport = require('passport'); //added for passport
+var session = require('express-session');
+var flash = require('connect-flash');  //^^added for passport
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+
+//added for passport
+app.use(session({ secret: 'WDI Rocks!',
+                  resave: true,
+                  saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+require('./config/passport/passport')(passport);
+
+// This middleware will allow us to use the currentUser in our views and routes.
+app.use(function (req, res, next) {
+  global.currentUser = req.user;
+  next();
+});      //added for passport
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
