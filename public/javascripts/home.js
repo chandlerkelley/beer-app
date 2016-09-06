@@ -6,13 +6,14 @@ angular.module("whatsOnTap")
 			<h2 class="search-title">search by beer or bar</h2>
 			<div id="search-bar">
 				<i id= "search-icon" class="material-icons">search</i>
-				<input id="input">
+				<input id="input" placeholder="Search by beer or bar">
 			</div>
 		</div>
 		<div class="bar-nav">
 			<a class="nav-arrow" ng-show="$ctrl.page > 0" ng-click="$ctrl.decPage()"><i class="material-icons">arrow_back</i></a>
 			<div class="new-bar-button btn">
-				<h3>Add new bar page</h3>
+				<h3>New bar page</h3>
+				<i id="plus" class="material-icons">add</i>
 			</div>
 			<a class="nav-arrow" ng-show="$ctrl.page < $ctrl.bars.length - 6" ng-click="$ctrl.incPage()"><i class="material-icons">arrow_forward</i></a>
 		</div>
