@@ -2,16 +2,21 @@ angular.module("whatsOnTap")
 .component("bar", {
 	template: `
 	<main>
-		<h1>{{bar.name}}</h1>
-		<div class="bar-nav">
+		<div class="bar-data">
+			<h1 class="bar-name">{{$ctrl.bar.name}}</h1>
+			<p>{{$ctrl.bar.neighborhood}}</p>
+			<p>{{$ctrl.bar.hours}}</p>
+			<p>{{$ctrl.bar.address}}</p>
+		</div>
+		<div class="add-remove-beer">
 			<a class="nav-arrow" ng-show="$ctrl.page > 0" ng-click="$ctrl.decPage()"><i class="material-icons">arrow_back</i></a>
-			<div id="new-bar-button" class="new-bar-button btn" ng-click="$ctrl.animate($event)">
-				<h3>New beer on tap</h3>
-				<i id="plus" class="material-icons">add</i>
+			<div class="beer-button btn" ng-click="$ctrl.animate($event)">
+				<h3>Add beer to taplist</h3>
+				<i class="material-icons">add</i>
 			</div>
-			<div id="new-bar-button" class="new-bar-button btn" ng-click="$ctrl.animate($event)">
-				<h3>Remove beer from list</h3>
-				<i id="plus" class="material-icons">add</i>
+			<div class="beer-button btn" ng-click="$ctrl.animate($event)">
+				<h3>Remove beer from taplist</h3>
+				<i class="material-icons">remove</i>
 			</div>
 			<a class="nav-arrow" ng-show="$ctrl.page < $ctrl.bars.length - 6" ng-click="$ctrl.incPage()"><i class="material-icons">arrow_forward</i></a>
 		</div>
@@ -20,7 +25,8 @@ angular.module("whatsOnTap")
 				<!-- Make the "1" in the limitTo above a value that comes from the page number -->
 				<i class="material-icons">local_drink</i>
 				<div class="button-content">
-					<h3>{{beer.brewery}} {{beer.name}}</h3>
+					<h3>{{beer.brewery}}</h3>
+					<h3>{{beer.name}}</h3>
 				</div>
 				<i class="material-icons">navigate_next</i>
 			</div>
@@ -35,21 +41,7 @@ angular.module("whatsOnTap")
 		}
 		this.bar = null;
 		this.beers = null;
-					// [
-					// 	{ name: "Beer 1", brewery: "Brewery" },
-					// 	{ name: "Beer 2", brewery: "Brewery" },
-					// 	{ name: "Beer 3", brewery: "Brewery" },
-					// 	{ name: "Beer 4", brewery: "Brewery" },
-					// 	{ name: "Beer 5", brewery: "Brewery" },
-					// 	{ name: "Beer 6", brewery: "Brewery" },
-					// 	{ name: "Beer 7", brewery: "Brewery" },
-					// 	{ name: "Beer 8", brewery: "Brewery" },
-					// 	{ name: "Beer 9", brewery: "Brewery" },
-					// 	{ name: "Beer 10", brewery: "Brewery" },
-					// 	{ name: "Beer 11", brewery: "Brewery" },
-					// 	{ name: "Beer 12", brewery: "Brewery" },
-					// 	{ name: "Beer 13", brewery: "Brewery" },
-					// ]
+
 		dataService.getOneBar($stateParams.id)
 		.then( res => {
 			console.log(res)
