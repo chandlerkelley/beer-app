@@ -206,6 +206,32 @@ form {
 	margin-right: 20px;
 }
 
+.bar-data {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px;
+}
+
+.bar-name {
+	font-size: 25px;
+}
+
+.add-remove-beer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+.beer-button {
+	width: 70%;
+	height: 40px;
+	justify-content: center;
+}
+
 @keyframes button-anim {
 	0% {
 		background: rgba(255,255,255,0);
@@ -249,5 +275,13 @@ form {
 
 	.form-part {
 		width: 60%;
+	}
+
+	.add-remove-beer {
+		flex-direction: row;
+	}
+
+	.beer-button {
+		width: 40%;
 	}
 }
