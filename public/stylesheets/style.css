@@ -111,8 +111,13 @@ main {
 }
 
 .nav-arrow {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	border: 3px solid #fff;
 	border-radius: 50%;
+	height: 40px;
+	width: 40px;
 }
 
 .button-container {
@@ -140,9 +145,9 @@ main {
 	justify-content: space-between;
 }
 
-.new-bar-button {
+#new-bar-button {
 	height: 40px;
-	width: 60%;
+	width: 200px;
 	justify-content: center;
 }
 
