@@ -35,7 +35,7 @@ Bar.remove({})
 .spread(function(joe, sue) {
   console.log('creating some new bars...');
   var kimballHouse = new Bar({
-     name: 'kimball house',
+     name: 'Kimball House',
      address: '303 E Howard Ave, Decatur, GA 30030',
      neighborhood: 'Decatur',
      hours: '5-10pm',
@@ -79,7 +79,28 @@ Bar.remove({})
           {brewery: "home made", name: "that fire"}
         ],
      user: joe._id });
-  return Bar.create([kimballHouse, theAlbert, thePorter, octaneBar, litBar]);
+  var brickBar = new Bar({
+     name: 'Brick Store',
+     address: '123 Downtown St, Decatur, GA 303030',
+     neighborhood: 'Decatur',
+     hours: 'late',
+     beers: [
+          {brewery: "Terrapin", name: "Recreation Ale"},
+          {brewery: "Guiness", name: "Extra Stout"},
+          {brewery: "Cigar City", name: "Jai Alai"},
+        ],
+     user: joe._id });
+  var midBar = new Bar({
+     name: 'Midway Pub',
+     address: '123 Flat Shoals Rd., Atlanta, GA 303030',
+     neighborhood: 'EAV',
+     hours: 'all day baby',
+     beers: [
+          {brewery: "Creature Comforts", name: "Athena"},
+          {brewery: "Orpheus", name: "Atalanta"},
+        ],
+     user: joe._id });
+  return Bar.create([kimballHouse, theAlbert, thePorter, octaneBar, litBar, brickBar, midBar]);
 })
 .then(function(savedBars) {
   console.log('Just saved', savedBars.length, 'todos.');

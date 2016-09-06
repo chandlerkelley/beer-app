@@ -6,7 +6,7 @@ angular.module("whatsOnTap")
 			<h2 class="search-title">search by beer or bar</h2>
 			<div id="search-bar">
 				<i id= "search-icon" class="material-icons">search</i>
-				<input id="input" placeholder="Search by beer or bar">
+				<input id="input" type="text" placeholder="Search by beer or bar" ng-model="$ctrl.search">
 			</div>
 		</div>
 		<div class="bar-nav">
@@ -18,7 +18,7 @@ angular.module("whatsOnTap")
 			<a class="nav-arrow" ng-show="$ctrl.page < $ctrl.bars.length - 6" ng-click="$ctrl.incPage()"><i class="material-icons">arrow_forward</i></a>
 		</div>
 		<div class="button-container">
-			<div ng-repeat="bar in $ctrl.bars | limitTo:6:$ctrl.page" class="main-button btn" ng-click="$ctrl.animate($event); $ctrl.showBar(bar)"> 
+			<div ng-repeat="bar in $ctrl.bars | filter: $ctrl.search | limitTo:6:$ctrl.page" class="main-button btn" ng-click="$ctrl.animate($event); $ctrl.showBar(bar)"> 
 				<!-- Make the "1" in the limitTo above a value that comes from the page number -->
 				<i class="material-icons">store_mall_directory</i>
 				<div class="button-content">
@@ -38,7 +38,8 @@ angular.module("whatsOnTap")
 		}
 		this.decPage = function() {
 			this.page-=6;
-		}
+		};
+
 		this.animate = function(event) {
 			$(event.currentTarget).addClass("anim");
 			setTimeout(() => { $(event.currentTarget).removeClass("anim") }, 750);
