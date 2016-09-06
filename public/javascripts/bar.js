@@ -21,7 +21,7 @@ angular.module("whatsOnTap")
 			<a class="nav-arrow" ng-show="$ctrl.page < $ctrl.bars.length - 6" ng-click="$ctrl.incPage()"><i class="material-icons">arrow_forward</i></a>
 		</div>
 		<div class="button-container">
-			<div ng-repeat="beer in $ctrl.beers" class="main-button btn" ng-click="$ctrl.animate($event)"> 
+			<div ng-repeat="beer in $ctrl.beers" class="main-button btn" ng-click="$ctrl.animate($event)">
 				<!-- Make the "1" in the limitTo above a value that comes from the page number -->
 				<i class="material-icons">local_drink</i>
 				<div class="button-content">
@@ -30,7 +30,7 @@ angular.module("whatsOnTap")
 				</div>
 				<i class="material-icons">navigate_next</i>
 			</div>
-			
+
 		</div>
 	</main>
 	`,
