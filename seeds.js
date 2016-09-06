@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 
 var User = require('./models/user');
-var Bars = require('./models/bars');
+var Bar = require('./models/bar');
 
 mongoose.connect('mongodb://localhost/beerApp');
 
@@ -19,7 +19,7 @@ function handleError(err) {
   return err;
 }
 console.log('removing bars...');
-Bars.remove({})
+Bar.remove({})
 .then(function() {
   console.log('removing old bars...');
   return User.remove({});
@@ -40,8 +40,7 @@ Bars.remove({})
      neighborhood: 'Decatur',
      hours: '5-10pm',
      beers: [
-          {brewery: Creature Comforts},
-          {beer: Athena}
+          {brewery: "Creature Comforts", name: "Athena"}
         ],
      user: joe._id });
   var theAlbert = new Bar({
@@ -50,8 +49,7 @@ Bars.remove({})
      neighborhood: 'Inman Park',
      hours: '3-12pm',
      beers: [
-          {brewery: Orpheus Brewing},
-          {beer: Atalanta}
+          {brewery: "Orpheus Brewing", name: "Atalanta"}
         ],
      user: joe._id });
   var thePorter = new Bar({
@@ -60,8 +58,7 @@ Bars.remove({})
      neighborhood: 'L5P',
      hours: '5-11pm',
      beers: [
-          {brewery: Wild Heaven},
-          {beer: White Blackbird}
+          {brewery: "Wild Heaven", name: "White Blackbird"}
         ],
      user: joe._id });
   var octaneBar = new Bar({
@@ -70,8 +67,7 @@ Bars.remove({})
      neighborhood: 'Grant Park',
      hours: '5-12pm',
      beers: [
-          {brewery: Terrapin},
-          {beer: Golden Ale}
+          {brewery: "Terrapin", name: "Golden Ale"}
         ],
      user: joe._id });
   var litBar = new Bar({
@@ -80,20 +76,19 @@ Bars.remove({})
      neighborhood: 'Zone 6',
      hours: 'all day baby',
      beers: [
-          {brewery: home made},
-          {beer: that fire}
+          {brewery: "home made", name: "that fire"}
         ],
      user: joe._id });
-  return Todo.create([kimballHouse, theAlbert, thePorter, octaneBar, litBar]);
+  return Bar.create([kimballHouse, theAlbert, thePorter, octaneBar, litBar]);
 })
 .then(function(savedBars) {
   console.log('Just saved', savedBars.length, 'todos.');
-  return Bars.find({}).populate('user');
+  return Bar.find({}).populate('user');
 })
 .then(function(allBars) {
   console.log('Printing all bars:');
-  allBars.forEach(function(bars) {
-    console.log(bars.toString());
+  allBars.forEach(function(bar) {
+    console.log(bar.toString());
   });
   quit();
 }, function(err) {
