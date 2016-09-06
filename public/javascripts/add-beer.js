@@ -9,15 +9,26 @@ angular.module("whatsOnTap")
         <button class="btn" type="submit">Search</button>
       </div>
     </form>
-  <div class="add-beer-list" ng-show="$ctrl.searched">
-    <h2>Click on beer to add<h2>
-    <div class="btn" ng-repeat="beer in $ctrl.foundBeers">
-    <h3>{{beer.name}}</h3>
+    <div class="bar-nav">
+      <a class="nav-arrow" ng-show="$ctrl.page > 0" ng-click="$ctrl.decPage()"><i class="material-icons">arrow_back</i></a>
+      <a class="nav-arrow" ng-show="$ctrl.page < $ctrl.foundBeers.length - 6" ng-click="$ctrl.incPage()"><i class="material-icons">arrow_forward</i></a>
     </div>
-  </div>
+    <h2>Click on beer to add<h2>
+    <div class="button-container" ng-show="$ctrl.searched">
+      <div class="btn main-button" ng-repeat="beer in $ctrl.foundBeers | limitTo:6:$ctrl.page">
+      <h3>{{beer.name}}</h3>
+      </div>
+    </div>
   </main>
   `,
   controller: function(dataService, $stateParams, $state) {
+    this.page = 0
+    this.incPage = function() {
+      this.page+=6;
+    }
+    this.decPage = function() {
+      this.page-=6;
+    };
     this.searched = false;
     this.foundBeers = null;
 
