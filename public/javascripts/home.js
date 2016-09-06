@@ -18,7 +18,7 @@ angular.module("whatsOnTap")
 			<a class="nav-arrow" ng-show="$ctrl.page < $ctrl.bars.length - 6" ng-click="$ctrl.incPage()"><i class="material-icons">arrow_forward</i></a>
 		</div>
 		<div class="button-container">
-			<div ng-repeat="bar in $ctrl.bars | filter: $ctrl.search | limitTo:6:$ctrl.page" class="main-button btn" ng-click="$ctrl.animate($event); $ctrl.showBar(bar)"> 
+			<div ng-repeat="bar in $ctrl.bars | filter: $ctrl.search | limitTo:6:$ctrl.page" class="main-button btn" ng-click="$ctrl.animate($event); $ctrl.showBar(bar)">
 				<!-- Make the "1" in the limitTo above a value that comes from the page number -->
 				<i class="material-icons">store_mall_directory</i>
 				<div class="button-content">
@@ -27,7 +27,7 @@ angular.module("whatsOnTap")
 				</div>
 				<i class="material-icons">navigate_next</i>
 			</div>
-			
+
 		</div>
 	</main>
 	`,
