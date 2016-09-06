@@ -11,4 +11,11 @@ router.get("/", function(req, res, next) {
 	})
 })
 
+router.get("/bar/:id", function(req, res, next) {
+	Bar.findById( req.params.id )
+	.then(function(bar) {
+		res.json(bar);
+	})
+})
+
 module.exports = router;

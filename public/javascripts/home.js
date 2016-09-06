@@ -18,7 +18,7 @@ angular.module("whatsOnTap")
 			<a class="nav-arrow" ng-show="$ctrl.page < $ctrl.bars.length - 6" ng-click="$ctrl.incPage()"><i class="material-icons">arrow_forward</i></a>
 		</div>
 		<div class="button-container">
-			<div ng-repeat="bar in $ctrl.bars | limitTo:6:$ctrl.page" class="main-button btn" ng-click="$ctrl.animate($event)" ui-sref="bar"> 
+			<div ng-repeat="bar in $ctrl.bars | limitTo:6:$ctrl.page" class="main-button btn" ng-click="$ctrl.animate($event); $ctrl.showBar(bar)"> 
 				<!-- Make the "1" in the limitTo above a value that comes from the page number -->
 				<i class="material-icons">store_mall_directory</i>
 				<div class="button-content">
@@ -31,7 +31,7 @@ angular.module("whatsOnTap")
 		</div>
 	</main>
 	`,
-	controller: function (dataService) {
+	controller: function (dataService, $state) {
 		this.page = 0;
 		this.incPage = function() {
 			this.page+=6;
@@ -43,21 +43,12 @@ angular.module("whatsOnTap")
 			$(event.currentTarget).addClass("anim");
 			setTimeout(() => { $(event.currentTarget).removeClass("anim") }, 750);
 		}
+
+		this.showBar = function(bar) {
+			$state.go("bar", { id: bar._id})
+		};
+
 		this.bars = null;
-					// [
-					// 	{ name: "Bar 1", neighborhood: "This neighborhood" },
-					// 	{ name: "Bar 2", neighborhood: "This neighborhood" },
-					// 	{ name: "Bar 3", neighborhood: "This neighborhood" },
-					// 	{ name: "Bar 4", neighborhood: "This neighborhood" },
-					// 	{ name: "Bar 5", neighborhood: "This neighborhood" },
-					// 	{ name: "Bar 6", neighborhood: "This neighborhood" },
-					// 	{ name: "Bar 7", neighborhood: "This neighborhood" },
-					// 	{ name: "Bar 8", neighborhood: "This neighborhood" },
-					// 	{ name: "Bar 9", neighborhood: "This neighborhood" },
-					// 	{ name: "Bar 10", neighborhood: "This neighborhood" },
-					// 	{ name: "Bar 11", neighborhood: "This neighborhood" },
-					// 	{ name: "Bar 12", neighborhood: "This neighborhood" },
-					// ]
 
 		dataService.getBars()
 		.then( res => {

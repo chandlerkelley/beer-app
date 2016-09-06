@@ -2,6 +2,7 @@ angular.module("whatsOnTap")
 .component("bar", {
 	template: `
 	<main>
+		<h1>{{bar.name}}</h1>
 		<div class="bar-nav">
 			<a class="nav-arrow" ng-show="$ctrl.page > 0" ng-click="$ctrl.decPage()"><i class="material-icons">arrow_back</i></a>
 			<div id="new-bar-button" class="new-bar-button btn" ng-click="$ctrl.animate($event)">
@@ -27,25 +28,33 @@ angular.module("whatsOnTap")
 		</div>
 	</main>
 	`,
-	controller: function () {
+	controller: function (dataService, $stateParams) {
 		this.animate = function(event) {
 			$(event.currentTarget).addClass("anim");
 			setTimeout(() => { $(event.currentTarget).removeClass("anim") }, 750);
 		}
-		this.beers = [
-						{ name: "Beer 1", brewery: "Brewery" },
-						{ name: "Beer 2", brewery: "Brewery" },
-						{ name: "Beer 3", brewery: "Brewery" },
-						{ name: "Beer 4", brewery: "Brewery" },
-						{ name: "Beer 5", brewery: "Brewery" },
-						{ name: "Beer 6", brewery: "Brewery" },
-						{ name: "Beer 7", brewery: "Brewery" },
-						{ name: "Beer 8", brewery: "Brewery" },
-						{ name: "Beer 9", brewery: "Brewery" },
-						{ name: "Beer 10", brewery: "Brewery" },
-						{ name: "Beer 11", brewery: "Brewery" },
-						{ name: "Beer 12", brewery: "Brewery" },
-						{ name: "Beer 13", brewery: "Brewery" },
-					]
+		this.bar = null;
+		this.beers = null;
+					// [
+					// 	{ name: "Beer 1", brewery: "Brewery" },
+					// 	{ name: "Beer 2", brewery: "Brewery" },
+					// 	{ name: "Beer 3", brewery: "Brewery" },
+					// 	{ name: "Beer 4", brewery: "Brewery" },
+					// 	{ name: "Beer 5", brewery: "Brewery" },
+					// 	{ name: "Beer 6", brewery: "Brewery" },
+					// 	{ name: "Beer 7", brewery: "Brewery" },
+					// 	{ name: "Beer 8", brewery: "Brewery" },
+					// 	{ name: "Beer 9", brewery: "Brewery" },
+					// 	{ name: "Beer 10", brewery: "Brewery" },
+					// 	{ name: "Beer 11", brewery: "Brewery" },
+					// 	{ name: "Beer 12", brewery: "Brewery" },
+					// 	{ name: "Beer 13", brewery: "Brewery" },
+					// ]
+		dataService.getOneBar($stateParams.id)
+		.then( res => {
+			console.log(res)
+			this.bar = res.data;
+			this.beers = res.data.beers;
+		})
 	}
 })
