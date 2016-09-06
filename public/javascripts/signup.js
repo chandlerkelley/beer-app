@@ -15,6 +15,7 @@ angular.module("whatsOnTap")
 	`,
 	controller: function(Auth, $state) {
 		this.signup = function(form) {
+			console.log("Trying to sign up!")
 			return this.Auth.createUser({
 				email: this.user.email,
 				password: this.user.password

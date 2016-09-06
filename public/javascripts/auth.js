@@ -1,4 +1,4 @@
-angular.module('myApp')
+angular.module('whatsOnTap')
 .service('Auth', function($http, $q) {
 
   var currentUser = null;

@@ -13,7 +13,7 @@ var users = require('./routes/users');
 
 var app = express();
 
-mongoose.connect("mongodb://localhost/beerapp")
+mongoose.connect("mongodb://localhost/beerApp")
 
 //added for passport
 app.use(session({ secret: 'WDI Rocks!',
