@@ -5,8 +5,8 @@ angular.module("whatsOnTap")
 		return $http.get("/tap")
 	};
 
-	// this.getOneBar = function(id) {
-	// 	return $http.get("/tap/bar/" + id)
-	// };
+	this.getOneBar = function(id) {
+		return $http.get("/tap/bar/" + id)
+	};
 
 })
