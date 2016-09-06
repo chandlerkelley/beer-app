@@ -24,7 +24,8 @@ angular.module("whatsOnTap")
     this.searchBeer = function(form) {
       dataService.searchApi(this.beerName)
       .then( res => {
-        this.foundBeers = res.data.data;
+        console.log(res.data);
+        this.foundBeers = res.data;
       })
       this.searched=true;
     }

@@ -9,8 +9,15 @@ angular.module("whatsOnTap")
 		return $http.get("/tap/bar/" + id)
 	};
 
-  this.searchApi = function (beer){
-    return $http.get("http://api.brewerydb.com/v2/beers?key=eeeb5067eaacf4cde53e19a554420dd6&&withBreweries=y&name=" + beer)
-  }
+	this.searchApi = function (beer){
+		return $http.get("/tap/api/" + beer)
+	}
+	
+	// this.searchApi = function (beer){
+	// 	return $http.get("http://api.brewerydb.com/v2/beers?key=eeeb5067eaacf4cde53e19a554420dd6&&withBreweries=y&name=" + beer,
+	// 		{
+	// 			headers: 
+	// 		})
+	// }
 
 })
