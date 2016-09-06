@@ -3,12 +3,18 @@ angular.module("whatsOnTap")
 	template: `
 	<main>
 		<form name="form" ng-submit="$ctrl.signup(form)" novalidate>
-			<label>Email</label>
-			<input type="email" name="email" ng-model="$ctrl.user.email">
-			<label>Password</label>
-			<input type="password" name="password" ng-model="$ctrl.user.password">
-			<label>Confirm Password</label>
-			<input type="password" name="password" ng-model="$ctrl.passwordCheck">
+			<div class="form-part">
+				<label class="form-label">Email</label>
+				<input type="email" name="email" ng-model="$ctrl.user.email">
+			</div>
+			<div class="form-part">
+				<label class="form-label">Password</label>
+				<input type="password" name="password" ng-model="$ctrl.user.password">
+			</div>
+			<div class="form-part">
+				<label>Confirm Password</label>
+				<input type="password" name="password" ng-model="$ctrl.passwordCheck">
+			</div>
 			<button class="btn" type="submit">Register</button>
 		</form>
 	</main>

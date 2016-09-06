@@ -5,17 +5,43 @@ body {
 	color:#fff;
 }
 
+a {
+	color: white;
+	text-decoration: none;
+}
+
 button:focus {
 	outline: 0;
+}
+
+input {
+	font-size: 30px;
+	color: #ffc044;
+	border-radius: 20px;
+	text-indent: 20px;
+	text-indent-right: 40px;
+	width: 100%;
+	border: 2px solid #fff;
 }
 
 input:focus {
 	outline: 0;
 }
 
-a {
-	color: white;
-	text-decoration: none;
+::-webkit-input-placeholder {
+	color: #fff;
+}
+
+:-moz-placeholder {
+	color: #fff;  
+}
+
+::-moz-placeholder {
+	color: #fff;  
+}
+
+:-ms-input-placeholder {  
+	color: #fff;  
 }
 
 header {
@@ -52,10 +78,13 @@ main {
 	flex-direction: column;
 	align-items: center;
 	width: 100%;
+	padding: 20px 0;
 }
 
 .search-title {
 	font-size: 25px;
+	display: inline-block;
+	padding: 20px 0;
 }
 
 #search-bar {
@@ -74,15 +103,6 @@ main {
 	/*font-size: 30px;*/
 }
 
-input {
-	font-size: 30px;
-	border-radius: 20px;
-	text-indent: 20px;
-	text-indent-right: 40px;
-	width: 100%;
-	border: 2px solid #fff;
-}
-
 .bar-nav {
 	display: flex;
 	justify-content: center;
@@ -91,8 +111,13 @@ input {
 }
 
 .nav-arrow {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	border: 3px solid #fff;
 	border-radius: 50%;
+	height: 40px;
+	width: 40px;
 }
 
 .button-container {
@@ -120,9 +145,9 @@ input {
 	justify-content: space-between;
 }
 
-.new-bar-button {
-	height: 50px;
-	width: 60%;
+#new-bar-button {
+	height: 40px;
+	width: 200px;
 	justify-content: center;
 }
 
@@ -161,6 +186,26 @@ footer {
 	text-align: right;
 }
 
+form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+
+.form-part {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 90%;
+	padding: 20px 0;
+}
+
+.form-label {
+	font-size: 20px;
+	margin-right: 20px;
+}
+
 @keyframes button-anim {
 	0% {
 		background: rgba(255,255,255,0);
@@ -180,5 +225,29 @@ footer {
 
 	.new-bar-button {
 		width: 30%;
+	}
+
+	.search-title {
+		display: none;
+	}
+
+	::-webkit-input-placeholder {
+   		color: #ffe084;
+	}
+
+	:-moz-placeholder {
+		color: #ffc044;  
+	}
+
+	::-moz-placeholder {
+		color: #ffc044;  
+	}
+
+	:-ms-input-placeholder {  
+		color: #ffc044;  
+	}
+
+	.form-part {
+		width: 60%;
 	}
 }
