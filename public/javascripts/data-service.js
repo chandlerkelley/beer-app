@@ -10,7 +10,8 @@ angular.module("whatsOnTap")
 	};
 
 	this.searchApi = function (beer){
-		return $http.get("/tap/api/" + beer)
+		var beerNoSpaces = beer.replace(" ", "%20")
+		return $http.get("/tap/api/" + beerNoSpaces)
 	}
 	
 	// this.searchApi = function (beer){
