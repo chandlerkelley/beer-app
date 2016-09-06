@@ -23,7 +23,7 @@ router.get("/bar/:id", function(req, res, next) {
 router.get("/api/:id", function (req, res, next) {
 	brewdb.search.beers({ q: req.params.id }, function(err, beers) {
 		console.log(beers)
-		res.json(beers);	
+		res.json(beers);
 	})
 })
 
