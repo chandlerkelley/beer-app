@@ -10,7 +10,7 @@ angular.module("whatsOnTap")
 		</div>
 		<div class="add-remove-beer">
 			<a class="nav-arrow" ng-show="$ctrl.page > 0" ng-click="$ctrl.decPage()"><i class="material-icons">arrow_back</i></a>
-			<div class="beer-button btn" ng-click="$ctrl.animate($event)">
+			<div class="beer-button btn" ng-click="$ctrl.animate($event); $ctrl.showNewBeer()">
 				<h3>Add beer to taplist</h3>
 				<i class="material-icons">add</i>
 			</div>
@@ -34,13 +34,17 @@ angular.module("whatsOnTap")
 		</div>
 	</main>
 	`,
-	controller: function (dataService, $stateParams) {
+	controller: function (dataService, $stateParams, $state) {
 		this.animate = function(event) {
 			$(event.currentTarget).addClass("anim");
 			setTimeout(() => { $(event.currentTarget).removeClass("anim") }, 750);
 		}
 		this.bar = null;
 		this.beers = null;
+
+		this.showNewBeer = function() {
+			$state.go("addBeer", {id: $stateParams.id})
+		}
 
 		dataService.getOneBar($stateParams.id)
 		.then( res => {
