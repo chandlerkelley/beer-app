@@ -51,9 +51,11 @@ router.put("/removebeer/:bar/:beer", function (req, res, next) {
 	Bar.findById( req.params.bar )
 	.then(function(bar) {
 		bar.beers.splice(beerIndex, 1)
-		bar.save();
+		bar.save()
+		.then( function(savedBar) {
+			res.json(savedBar);
+		})
 	})
-	res.sendStatus(200);
 })
 
 module.exports = router;

@@ -49,7 +49,10 @@ angular.module("whatsOnTap")
 		this.removeBeer = function(index) {
 			dataService.removeBeerFromBar($stateParams.id, index)
 			.then(function( res ) {
-				console.log( res )
+				this.bar = res.data;
+				this.beers = res.data.beers;
+				console.log(this.bar);
+				console.log(this.beers);
 			})
 		}
 
