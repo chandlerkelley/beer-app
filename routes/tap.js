@@ -26,6 +26,14 @@ router.get("/apisearch/:id", function (req, res, next) {
 	})
 })
 
+router.get("/beer/:bar/:beer", function (req, res, next) {
+	var beerIndex = req.params.beer;
+	Bar.findById( req.params.bar )
+	.then(function(bar) {
+		res.json(bar.beers[ beerIndex ]);
+	})
+})
+
 router.post("/addbar", function(req,res,next){
 	var newBar = new Bar();
 	newBar.name = req.body.name;
