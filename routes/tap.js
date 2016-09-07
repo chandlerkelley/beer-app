@@ -26,6 +26,18 @@ router.get("/apisearch/:id", function (req, res, next) {
 	})
 })
 
+router.post("/addbar", function(req,res,next){
+	var newBar = new Bar();
+	newBar.name = req.body.name;
+	newBar.neighborhood = req.body.neighborhood;
+	newBar.address = req.body.address;
+	newBar.hours = req.body.hours;
+	newBar.save()
+	.then(function(savedBar) {
+		res.json(savedBar);
+	})
+})
+
 router.put("/addbeer/:bar/:beer", function (req, res, next) {
 	var barId = req.params.bar;
 	brewdb.beer.getById( req.params.beer , { withBreweries: "Y" }, function(err, selectedBeer) {
