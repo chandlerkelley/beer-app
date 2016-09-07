@@ -6,7 +6,7 @@ angular.module("whatsOnTap")
 			<h2 class="search-title">search by beer or bar</h2>
 			<div id="search-bar">
 				<i id= "search-icon" class="material-icons">search</i>
-				<input id="input" type="text" placeholder="Search by beer or bar" ng-model="$ctrl.search">
+				<input id="input" type="text" placeholder="Search by beer or bar" ng-model="$ctrl.search" ng-focus="$ctrl.growBar($event)" ng-blur="$ctrl.shrinkBar($event)">
 			</div>
 		</div>
 		<div class="bar-nav">
@@ -44,6 +44,14 @@ angular.module("whatsOnTap")
 			$(event.currentTarget).addClass("anim");
 			setTimeout(() => { $(event.currentTarget).removeClass("anim") }, 750);
 		}
+
+		this.growBar = function(event) {
+			$(event.currentTarget).parent().css("width", "60%")
+		};
+
+		this.shrinkBar = function(event) {
+			$(event.currentTarget).parent().css("width", "55%")
+		};
 
 		this.showBar = function(bar) {
 			$state.go("bar", { id: bar._id})
