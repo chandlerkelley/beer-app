@@ -10,12 +10,12 @@ angular.module("whatsOnTap")
 			</div>
 		</div>
 		<div class="bar-nav">
-			<a class="nav-arrow" ng-class="{hide : !($ctrl.page > 0)}" ng-click="$ctrl.decPage()"><i class="material-icons">arrow_back</i></a>
-			<div id="new-bar-button" class="new-bar-button btn" ng-click="$ctrl.animate($event); $ctrl.showAddBar()">
+			<div class="nav-arrow" ng-class="{hide : !($ctrl.page > 0)}" ng-click="$ctrl.decPage(); $ctrl.animate($event)"><i class="material-icons">arrow_back</i></div>
+			<div class="small-button btn" ng-click="$ctrl.animate($event); $ctrl.showAddBar()">
 				<h3>New bar page</h3>
 				<i id="plus" class="material-icons">add</i>
 			</div>		
-			<a class="nav-arrow" ng-class="{hide : !($ctrl.page < $ctrl.bars.length - 6)}" ng-click="$ctrl.incPage()"><i class="material-icons">arrow_forward</i></a>
+			<div class="nav-arrow" ng-class="{hide : !($ctrl.page < $ctrl.bars.length - 6)}" ng-click="$ctrl.incPage(); $ctrl.animate($event)"><i class="material-icons">arrow_forward</i></div>
 		</div>
 		<div class="button-container">
 			<div ng-repeat="bar in $ctrl.bars | filter: $ctrl.search | limitTo:6:$ctrl.page" class="main-button btn" ng-click="$ctrl.animate($event); $ctrl.showBar(bar)">

@@ -2,23 +2,25 @@ angular.module("whatsOnTap")
 .component("bar", {
 	template: `
 	<main>
-		<div class="bar-data">
-			<h1 class="bar-name">{{$ctrl.bar.name}}</h1>
-			<p>{{$ctrl.bar.neighborhood}}</p>
-			<p>{{$ctrl.bar.hours}}</p>
-			<p>{{$ctrl.bar.address}}</p>
+		<h1 class="bar-name">{{$ctrl.bar.name}}</h1>
+		<div class="bar-header">
+			<i class="material-icons">arrow_back</i>
+			<div class="bar-data">
+				<p class="bar-para">{{$ctrl.bar.neighborhood}}</p>
+				<p class="bar-para">{{$ctrl.bar.hours}}</p>
+				<p class="bar-para">{{$ctrl.bar.address}}</p>
+			</div>
+			<i class="material-icons">edit</i>
 		</div>
 		<div class="add-remove-beer">
-			<a class="nav-arrow" ng-show="$ctrl.page > 0" ng-click="$ctrl.decPage()"><i class="material-icons">arrow_back</i></a>
-			<div class="beer-button btn" ng-click="$ctrl.animate($event); $ctrl.showNewBeer()">
-				<h3>Add beer to taplist</h3>
+			<div class="small-button btn" ng-click="$ctrl.animate($event); $ctrl.showNewBeer()">
+				<h3>Add beer</h3>
 				<i class="material-icons">add</i>
 			</div>
-			<div class="beer-button btn" ng-click="$ctrl.animate($event); $ctrl.showRemoveBeer()">
-				<h3>Remove beer from taplist</h3>
+			<div class="small-button btn" ng-click="$ctrl.animate($event); $ctrl.showRemoveBeer()">
+				<h3>Remove beer</h3>
 				<i class="material-icons">remove</i>
 			</div>
-			<a class="nav-arrow" ng-show="$ctrl.page < $ctrl.bars.length - 6" ng-click="$ctrl.incPage()"><i class="material-icons">arrow_forward</i></a>
 		</div>
 		<div class="button-container">
 			<div ng-repeat="beer in $ctrl.beers track by $index" class="main-button btn" ng-click="$ctrl.animate($event); $ctrl.showBeer($index)">

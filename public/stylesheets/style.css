@@ -150,7 +150,7 @@ main {
 	justify-content: space-between;
 }
 
-#new-bar-button {
+.small-button {
 	height: 40px;
 	width: 200px;
 	justify-content: center;
@@ -161,6 +161,7 @@ main {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	text-align: center;
 }
 
 .material-icons {
@@ -211,16 +212,28 @@ form {
 	margin-right: 20px;
 }
 
+.bar-name {
+	font-size: 30px;
+	text-align: center;
+	padding-top: 5px;
+}
+
+.bar-header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .bar-data {
-	width: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 20px;
+	padding: 5px;
 }
 
-.bar-name {
-	font-size: 25px;
+.bar-para {
+	margin-bottom: 4px;
+	text-align: center
 }
 
 .add-remove-beer {
