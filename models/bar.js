@@ -3,9 +3,9 @@ var User = require("./user.js")
 
 var BarSchema = new mongoose.Schema({
   name:     { type: String,  required: true },
-  address: { type: String, required: true },
-  neighborhood: { type: String, required: false },
-  hours: { type: String, required: true },
+  neighborhood: { type: String, required: true },
+  address: { type: String, required: false },
+  hours: { type: String, required: false },
   beers: [],
   user:      { type: mongoose.Schema.Types.ObjectId, ref: 'User'}
   }
