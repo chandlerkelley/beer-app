@@ -14,7 +14,7 @@ angular.module("whatsOnTap")
 				<h3>Add beer to taplist</h3>
 				<i class="material-icons">add</i>
 			</div>
-			<div class="beer-button btn" ng-click="$ctrl.animate($event)">
+			<div class="beer-button btn" ng-click="$ctrl.animate($event); $ctrl.showRemoveBeer()">
 				<h3>Remove beer from taplist</h3>
 				<i class="material-icons">remove</i>
 			</div>
@@ -48,6 +48,10 @@ angular.module("whatsOnTap")
 		
 		this.showNewBeer = function() {
 			$state.go("addBeer", {id: $stateParams.id})
+		}
+
+		this.showRemoveBeer = function() {
+			$state.go("removeBeer", {id: $stateParams.id})
 		}
 
 		dataService.getOneBar($stateParams.id)

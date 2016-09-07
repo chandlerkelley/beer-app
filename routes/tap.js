@@ -53,7 +53,7 @@ router.put("/removebeer/:bar/:beer", function (req, res, next) {
 		bar.beers.splice(beerIndex, 1)
 		bar.save()
 		.then( function(savedBar) {
-			res.json(savedBar);
+			res.sendStatus(200);
 		})
 	})
 })
