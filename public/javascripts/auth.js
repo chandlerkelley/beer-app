@@ -1,4 +1,4 @@
-angular.module('whatsOnTap')
+angular.module("whatsOnTap")
 .service('Auth', function($http, $q) {
 
   var currentUser = null;
@@ -19,13 +19,18 @@ angular.module('whatsOnTap')
   };
 
   this.isLoggedIn = function() {
+   if(currentUser) {
+    console.log(currentUser.email)
+  }
     return currentUser ? currentUser.email !== '' : false;
   };
 
   this.login = function(credentials) {
     return $http.post('/login', credentials)
-    .then(res => {
+    .then( res => {
+      console.log( "About to set current user to " + res.data.email );
       currentUser = res.data;
+      console.log( "Current user is" + currentUser)
     })
     .catch(err => {
       console.log('ERROR:', err);
@@ -39,6 +44,8 @@ angular.module('whatsOnTap')
       currentUser = null;
     });
   };
+
+
 
   this.createUser = function(user) {
     return $http.post('/signup', user)

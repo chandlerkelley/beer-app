@@ -10,14 +10,16 @@ var strategy = new LocalStrategy({
     User.findOne({ 'local.email' : email }, function(err, user) {
       if (err) return callback(err);
 
-      // If no user is found
+      // PROGRAM WHAT TO DO IF USER NOT FOUND
       if (!user) {
-        return callback(null, false, req.flash('error', 'User not found.'));
+        console.log("user not found")
+        return callback();
       }
 
       // Validate password
       if (!user.isValidPassword(password)) {
-        return callback(null, false, req.flash('error', 'Oops! Wrong password.'));
+        console.log("Password wrong")
+        return callback(); //PROGRAM WHAT TO DO IS PASSWORD IS WRONG
       }
       return callback(null, user);
     });

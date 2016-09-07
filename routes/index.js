@@ -19,13 +19,13 @@ router.post("/signup", function(req, res, next) {
 		}
 		req.login(user, function(err) {
 			if (err) return res.status(401).json(error);
-			res.json( { email: user.local.email });
+			res.json( { email: user.local.email }); // This is not returning email
 		});
 	})(req, res, next);
 });
 
 // Log in
-router.post("/logout", function(req, res, next) {
+router.post("/login", function(req, res, next) {
 	passport.authenticate('local-login', function(err, user, info) {
 		var error = err || info;
 		if (error) {
@@ -36,6 +36,7 @@ router.post("/logout", function(req, res, next) {
 		}
 		req.login(user, function(err) {
 			if (err) return res.status(401).json(error);
+			console.log(user.local.email);
 			res.json( { email: user.local.email });
 		});
 	})(req, res, next);

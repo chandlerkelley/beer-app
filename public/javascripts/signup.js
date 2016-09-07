@@ -20,14 +20,14 @@ angular.module("whatsOnTap")
 	</main>
 	`,
 	controller: function(Auth, $state) {
+
 		this.signup = function(form) {
-			console.log("Trying to sign up!")
-			return this.Auth.createUser({
+			return Auth.createUser({
 				email: this.user.email,
 				password: this.user.password
 			})
 			.then(() => {
-				this.$state.go("home");
+				$state.go("home");
 			})
 		}
 	}

@@ -1,4 +1,4 @@
-angular.module('whatsOnTap')
+angular.module("whatsOnTap")
 .component('navbar', {
   template: `
     <header>
@@ -10,10 +10,14 @@ angular.module('whatsOnTap')
     </header>
   `,
   controller: function(Auth, $state) {
+
+    this.Auth = Auth;
+    this.$state = $state;
+    console.log(Auth.isLoggedIn())
     this.logout = function() {
-      this.Auth.logout()
+      Auth.logout()
       .then( res => {
-        this.$state.go('Home');
+        $state.go('home');
       });
     };
   }

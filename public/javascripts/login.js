@@ -17,12 +17,12 @@ angular.module("whatsOnTap")
 	`,
 	controller: function(Auth, $state) {
 		this.login = function(form) {
-			this.Auth.login({
+			Auth.login({
 				email: this.user.email,
 				password: this.user.password
 			})
 			.then(() => {
-				this.$state.go("home");
+				$state.go("home");
 			})
 		}
 	}
