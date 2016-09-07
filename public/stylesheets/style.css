@@ -110,6 +110,10 @@ main {
 	width: 100%;
 }
 
+.hide {
+	visibility: hidden;
+}
+
 .nav-arrow {
 	display: flex;
 	align-items: center;
