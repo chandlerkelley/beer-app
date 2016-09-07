@@ -233,6 +233,11 @@ form {
 	justify-content: center;
 }
 
+.remove {
+	color: red;
+	border-color: red;
+}
+
 @keyframes button-anim {
 	0% {
 		background: rgba(255,255,255,0);

@@ -26,10 +26,13 @@ angular.module("whatsOnTap", ["ui.router"])
 		url: "/beer/:bar/:beer",
 		template: "<beer></beer>"
 	})
-
 	.state("addBeer", {
 		url: "/addbeer/:id",
 		template: "<add-beer></add-beer>"
+	})
+	.state("removeBeer", {
+		url: "/remove/:id",
+		template: "<remove></remove>"
 	})
 	// .state("remove-beer" {
 	// 	url: "/remove-beer/:id",
