@@ -11,7 +11,7 @@ angular.module("whatsOnTap")
 		</div>
 		<div class="bar-nav">
 			<a class="nav-arrow" ng-show="$ctrl.page > 0" ng-click="$ctrl.decPage()"><i class="material-icons">arrow_back</i></a>
-			<div id="new-bar-button" class="new-bar-button btn" ng-click="$ctrl.animate($event)">
+			<div id="new-bar-button" class="new-bar-button btn" ng-click="$ctrl.animate($event); $ctrl.showAddBar()">
 				<h3>New bar page</h3>
 				<i id="plus" class="material-icons">add</i>
 			</div>
@@ -56,6 +56,10 @@ angular.module("whatsOnTap")
 		this.showBar = function(bar) {
 			$state.go("bar", { id: bar._id})
 		};
+
+		this.showAddBar = function() {
+			$state.go("addBar");
+		}
 
 		this.bars = null;
 

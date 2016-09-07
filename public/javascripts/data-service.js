@@ -18,7 +18,7 @@ angular.module("whatsOnTap")
 		return $http.put("/tap/addbeer/" + bar + "/" + beer)
 	}
 
-		this.addBar = function (bar) {
+	this.addBar = function (bar) {
 		return $http.post("/tap/addbar/", bar);
 	}
 

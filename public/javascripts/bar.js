@@ -56,7 +56,6 @@ angular.module("whatsOnTap")
 
 		dataService.getOneBar($stateParams.id)
 		.then( res => {
-			console.log(res)
 			this.bar = res.data;
 			this.beers = res.data.beers;
 		})
