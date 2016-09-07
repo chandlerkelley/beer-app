@@ -2,15 +2,15 @@ angular.module("whatsOnTap")
 .component("bar", {
 	template: `
 	<main>
-		<h1 class="bar-name">{{$ctrl.bar.name}}</h1>
-		<div class="bar-header">
-			<i class="material-icons">arrow_back</i>
-			<div class="bar-data">
-				<p class="bar-para">{{$ctrl.bar.neighborhood}}</p>
-				<p class="bar-para">{{$ctrl.bar.hours}}</p>
-				<p class="bar-para">{{$ctrl.bar.address}}</p>
+		<h1 class="info-name">{{$ctrl.bar.name}}</h1>
+		<div class="info-header">
+			<div ng-click="$ctrl.showHome()"><i class="material-icons">arrow_back</i></div>
+			<div class="info-data">
+				<p class="info-para">{{$ctrl.bar.neighborhood}}</p>
+				<p class="info-para">{{$ctrl.bar.hours}}</p>
+				<p class="info-para">{{$ctrl.bar.address}}</p>
 			</div>
-			<i class="material-icons">edit</i>
+			<div><i class="material-icons">edit</i></div>
 		</div>
 		<div class="add-remove-beer">
 			<div class="small-button btn" ng-click="$ctrl.animate($event); $ctrl.showNewBeer()">
@@ -44,6 +44,10 @@ angular.module("whatsOnTap")
 		this.bar = null;
 		this.beers = null;
 
+		this.showHome = function() {
+			$state.go("home");
+		};
+		
 		this.showBeer = function(beerIndex) {
 			$state.go("beer", { bar: $stateParams.id, beer: beerIndex})
 		};
