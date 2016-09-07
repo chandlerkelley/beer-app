@@ -13,7 +13,6 @@ angular.module("whatsOnTap")
 
     this.Auth = Auth;
     this.$state = $state;
-    console.log(Auth.isLoggedIn())
     this.logout = function() {
       Auth.logout()
       .then( res => {
