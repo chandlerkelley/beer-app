@@ -11,7 +11,7 @@ angular.module("whatsOnTap")
     </header>
   `,
   controller: function(Auth, $state) {
-    
+    this.Auth = Auth;
     this.logout = function() {
       Auth.logout()
       .then( res => {
