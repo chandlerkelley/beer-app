@@ -3,12 +3,14 @@ angular.module("whatsOnTap")
   template: `
   <main>
     <form name="form" ng-submit="$ctrl.searchBeer(form)" novalidate>
-      <div class="form-part">
-
-        <input type="text" ng-model="$ctrl.beerName" placeholder="Search for a beer">
-        <button class="btn form-button" type="submit">Search</button>
+      <div class="search-container">
+        <h2 class="search-title">search by a beer</h2>
+        <div id="small-search" class="search-bar">
+          <input class="small-search" type="text" ng-model="$ctrl.beerName" placeholder="Search for a beer" ng-focus="$ctrl.growBar($event)" ng-blur="$ctrl.shrinkBar($event)">
+          <button class="btn form-button" type="submit">Search</button> 
+        </div>
       </div>
-    </form>
+    </form> 
     <div class="bar-nav">
       <div class="nav-arrow" ng-class="{hide : !($ctrl.page > 0)}" ng-click="$ctrl.decPage(); $ctrl.animate($event)"><i class="material-icons">arrow_back</i></div>
       <h2 class="instructions">Click on beer to add<h2>
@@ -24,14 +26,26 @@ angular.module("whatsOnTap")
   </main>
   `,
   controller: function(dataService, $stateParams, $state) {
-    this.page = 0
+    this.page = 0;
+    
     this.incPage = function() {
       this.page+=6;
-    }
+    };
+
     this.decPage = function() {
       this.page-=6;
     };
+
+    this.growBar = function(event) {
+      $(event.currentTarget).parent().css("width", "75%")
+    };
+
+    this.shrinkBar = function(event) {
+      $(event.currentTarget).parent().css("width", "65%")
+    };
+
     this.searched = false;
+
     this.foundBeers = null;
 
     this.searchBeer = function(form) {

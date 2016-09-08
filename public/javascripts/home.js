@@ -4,7 +4,7 @@ angular.module("whatsOnTap")
 	<main>
 		<div class="search-container">
 			<h2 class="search-title">search by beer or bar</h2>
-			<div id="search-bar">
+			<div class="search-bar">
 				<i id= "search-icon" class="material-icons">search</i>
 				<input id="input" type="text" placeholder="Search by beer or bar" ng-model="$ctrl.search" ng-focus="$ctrl.growBar($event)" ng-blur="$ctrl.shrinkBar($event)">
 			</div>

@@ -79,7 +79,7 @@ main {
 	flex-direction: column;
 	align-items: center;
 	width: 100%;
-	padding: 10px 0 ;
+	padding-top: 15px;
 }
 
 .search-title {
@@ -88,7 +88,7 @@ main {
 	padding-bottom: 15px;
 }
 
-#search-bar {
+.search-bar {
 	position: relative;
 	display: inline-block;
 	width: 55%;
@@ -268,6 +268,12 @@ form {
 .instructions {
 	font-size: 20px;
 	margin:  0 10px;
+}
+
+#small-search {
+	display: flex;
+	align-items: center;
+	width: 75%;
 }
 
 @keyframes button-anim {
