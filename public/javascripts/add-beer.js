@@ -6,16 +6,16 @@ angular.module("whatsOnTap")
       <div class="form-part">
 
         <input type="text" ng-model="$ctrl.beerName" placeholder="Search for a beer">
-        <button class="btn" type="submit">Search</button>
+        <button class="btn form-button" type="submit">Search</button>
       </div>
     </form>
     <div class="bar-nav">
-      <a class="nav-arrow" ng-show="$ctrl.page > 0" ng-click="$ctrl.decPage()"><i class="material-icons">arrow_back</i></a>
-      <h2>Click on beer to add<h2>
-      <a class="nav-arrow" ng-show="$ctrl.page < $ctrl.foundBeers.length - 6" ng-click="$ctrl.incPage()"><i class="material-icons">arrow_forward</i></a>
+      <div class="nav-arrow" ng-class="{hide : !($ctrl.page > 0)}" ng-click="$ctrl.decPage(); $ctrl.animate($event)"><i class="material-icons">arrow_back</i></div>
+      <h2 class="instructions">Click on beer to add<h2>
+      <div class="nav-arrow" ng-class="{hide : !($ctrl.page < $ctrl.foundBeers.length - 8)}" ng-click="$ctrl.incPage(); $ctrl.animate($event)"><i class="material-icons">arrow_forward</i></div>
     </div>
     <div class="button-container" ng-show="$ctrl.searched">
-      <div class="btn main-button" ng-repeat="beer in $ctrl.foundBeers | limitTo:6:$ctrl.page" ng-click="$ctrl.addBeer(beer.id)">
+      <div class="btn main-button" ng-repeat="beer in $ctrl.foundBeers | limitTo:8:$ctrl.page" ng-click="$ctrl.addBeer(beer.id)">
         <i class="material-icons">local_drink</i>
         <h3>{{beer.name}}</h3>
         <i id="plus" class="material-icons">add</i>

@@ -11,7 +11,7 @@ angular.module("whatsOnTap")
 				<label class="form-label">Password</label>
 				<input type="password" name="password" ng-model="$ctrl.user.password">
 			</div>
-			<button class="btn" type="submit">Log In</button>
+			<button class="btn form-button" type="submit">Log In</button>
 		</form>
 	</main>
 	`,

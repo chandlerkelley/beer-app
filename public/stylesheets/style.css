@@ -71,6 +71,7 @@ header {
 main {
 	background: linear-gradient(to bottom, #ffc044, #fc9014);
 	color: #fff;
+	min-height: 560px;
 }
 
 .search-container {
@@ -78,13 +79,13 @@ main {
 	flex-direction: column;
 	align-items: center;
 	width: 100%;
-	padding: 20px 0;
+	padding: 10px 0 ;
 }
 
 .search-title {
 	font-size: 25px;
 	display: inline-block;
-	padding: 20px 0;
+	padding-bottom: 15px;
 }
 
 #search-bar {
@@ -253,6 +254,20 @@ form {
 .remove {
 	color: red;
 	border-color: red;
+}
+
+.form-button {
+	height: 40px;
+	width: 100px;
+	justify-content: center;
+	background: none;
+	color: white;
+	font-size: 15px;
+}
+
+.instructions {
+	font-size: 20px;
+	margin:  0 10px;
 }
 
 @keyframes button-anim {
