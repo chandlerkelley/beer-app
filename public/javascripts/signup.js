@@ -13,13 +13,13 @@ angular.module("whatsOnTap")
 			</div>
 			<div class="form-part">
 				<label>Confirm Password</label>
-				<input type="password" name="password" ng-model="$ctrl.passwordCheck">
+				<input type="password" name="password-check" ng-model="$ctrl.passwordCheck">
 			</div>
 			<button class="btn form-button" type="submit">Register</button>
 		</form>
 	</main>
 	`,
-	controller: function(Auth, $state) {
+	controller: function(Auth, $state, toastr) {
 
 		this.signup = function(form) {
 			return Auth.createUser({
@@ -28,6 +28,10 @@ angular.module("whatsOnTap")
 			})
 			.then(() => {
 				$state.go("home");
+			})
+			.catch( err => {
+				console.log(err);
+				toastr.error("Something went wrong");
 			})
 		}
 	}

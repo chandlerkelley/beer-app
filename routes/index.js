@@ -2,6 +2,16 @@ var express = require('express');
 var router = express.Router();
 var passport = require("passport");
 
+function makeError(res, message, status) {
+  res.statusCode = status;
+  // var error = new Error(message);
+  var error = {
+    status: status,
+    message: message
+  };
+  return error;
+}
+
 /* GET home page. */
 router.get("/", function(req, res, next) {
   res.render("index");
@@ -15,7 +25,7 @@ router.post("/signup", function(req, res, next) {
 			return res.status(401).json(error);
 		}
 		if (!user) {
-			return res.status(404).json({message: 'Something went wrong, please try again.'});
+			return next(makeError(res, "Something went wrong, please try again", 500));
 		}
 		req.login(user, function(err) {
 			if (err) return res.status(401).json(error);
