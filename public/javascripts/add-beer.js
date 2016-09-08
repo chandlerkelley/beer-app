@@ -37,11 +37,11 @@ angular.module("whatsOnTap")
     };
 
     this.growBar = function(event) {
-      $(event.currentTarget).parent().css("width", "75%")
+      $(event.currentTarget).parent().css("width", "80%")
     };
 
     this.shrinkBar = function(event) {
-      $(event.currentTarget).parent().css("width", "65%")
+      $(event.currentTarget).parent().css("width", "75%")
     };
 
     this.searched = false;

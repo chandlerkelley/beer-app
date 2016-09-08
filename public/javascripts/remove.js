@@ -2,27 +2,23 @@ angular.module("whatsOnTap")
 .component("remove", {
 	template: `
 	<main>
-		<div class="bar-data">
-			<h1 class="bar-name">{{$ctrl.bar.name}}</h1>
-			<p>{{$ctrl.bar.neighborhood}}</p>
-			<p>{{$ctrl.bar.hours}}</p>
-			<p>{{$ctrl.bar.address}}</p>
+		<h1 class="info-name">{{$ctrl.bar.name}}</h1>
+		<div class="info-header">
+			<div ng-click="$ctrl.showHome()"><i class="material-icons">arrow_back</i></div>
+			<div class="info-data">
+				<p class="info-para">{{$ctrl.bar.neighborhood}}</p>
+				<p class="info-para">{{$ctrl.bar.hours}}</p>
+				<p class="info-para">{{$ctrl.bar.address}}</p>
+			</div>
+			<div><i class="material-icons">edit</i></div>
 		</div>
 		<div class="add-remove-beer">
-			<a class="nav-arrow" ng-show="$ctrl.page > 0" ng-click="$ctrl.decPage()"><i class="material-icons">arrow_back</i></a>
-			<div class="beer-button btn" ng-click="$ctrl.animate($event); $ctrl.showNewBeer()">
-				<h3>Add beer to taplist</h3>
-				<i class="material-icons">add</i>
+			<div class="small-button btn" ng-click="$ctrl.animate($event); $ctrl.showBar()">
+				<h3>Cancel</h3>
 			</div>
-			<div class="beer-button btn" ng-click="$ctrl.animate($event)">
-				<h3>Remove beer from taplist</h3>
-				<i class="material-icons">remove</i>
-			</div>
-			<a class="nav-arrow" ng-show="$ctrl.page < $ctrl.bars.length - 6" ng-click="$ctrl.incPage()"><i class="material-icons">arrow_forward</i></a>
 		</div>
 		<div class="button-container">
 			<div ng-repeat="beer in $ctrl.beers track by $index" class="main-button btn remove" ng-click="$ctrl.animate($event); $ctrl.removeBeer($index)">
-				<!-- Make the "1" in the limitTo above a value that comes from the page number -->
 				<i class="material-icons">local_drink</i>
 				<div class="button-content">
 					<h3>{{beer.brewery}}</h3>
@@ -41,9 +37,13 @@ angular.module("whatsOnTap")
 		}
 		this.bar = null;
 		this.beers = null;
-		
-		this.showNewBeer = function() {
-			$state.go("addBeer", {id: $stateParams.id})
+
+		this.showBar = function() {
+			$state.go("bar", {id: $stateParams.id});
+		}
+
+		this.showHome = function() {
+			$state.go("home");
 		}
 
 		this.removeBeer = function(index) {

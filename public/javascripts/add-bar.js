@@ -19,7 +19,7 @@ angular.module("whatsOnTap")
         <label class="form-label">Hours</label>
         <input type="text"  ng-model="$ctrl.hours">
       </div>
-      <button class="btn" type="submit">Create Bar</button>
+      <button class="btn form-button" type="submit">Create Bar</button>
     </form>
   </main>
   `,
