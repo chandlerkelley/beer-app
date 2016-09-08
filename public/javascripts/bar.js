@@ -10,7 +10,7 @@ angular.module("whatsOnTap")
 				<p class="info-para">{{$ctrl.bar.hours}}</p>
 				<p class="info-para">{{$ctrl.bar.address}}</p>
 			</div>
-			<div><i class="material-icons">edit</i></div>
+			<div ng-click="$ctrl.editBar()"><i class="material-icons">edit</i></div>
 		</div>
 		<div class="add-remove-beer">
 			<div class="small-button btn" ng-click="$ctrl.animate($event); $ctrl.showNewBeer()">
@@ -47,11 +47,15 @@ angular.module("whatsOnTap")
 		this.showHome = function() {
 			$state.go("home");
 		};
-		
+
 		this.showBeer = function(beerIndex) {
 			$state.go("beer", { bar: $stateParams.id, beer: beerIndex})
 		};
-		
+
+		this.editBar = function() {
+			$state.go("edit", {id: $stateParams.id})
+		}
+
 		this.showNewBeer = function() {
 			$state.go("addBeer", {id: $stateParams.id})
 		}
