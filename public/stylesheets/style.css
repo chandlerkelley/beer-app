@@ -276,6 +276,10 @@ form {
 	width: 75%;
 }
 
+.toast-top-right {
+	top: 58px;
+}
+
 @keyframes button-anim {
 	0% {
 		background: rgba(255,255,255,0);

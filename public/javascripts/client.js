@@ -1,4 +1,4 @@
-angular.module("whatsOnTap", ["ui.router"])
+angular.module("whatsOnTap", ["ui.router", "toastr"])
 
 .config(function($stateProvider, $urlRouterProvider) {
 

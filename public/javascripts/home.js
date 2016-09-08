@@ -31,7 +31,7 @@ angular.module("whatsOnTap")
 		</div>
 	</main>
 	`,
-	controller: function (dataService, $state) {
+	controller: function (dataService, $state, Auth, toastr) {
 		this.page = 0;
 		this.incPage = function() {
 			this.page+=8;
@@ -58,7 +58,11 @@ angular.module("whatsOnTap")
 		};
 
 		this.showAddBar = function() {
-			$state.go("addBar");
+			if (Auth.isLoggedIn()) {
+				$state.go("addBar");
+			} else {
+				toastr.error("Must be logged in to create a new bar page");
+			}
 		}
 
 		this.bars = null;
