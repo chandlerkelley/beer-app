@@ -23,20 +23,21 @@ angular.module("whatsOnTap")
     </form>
   </main>
   `,
-  controller: function($state, dataService) {
+  controller: function(Auth, $state, dataService, toastr) {
     this.createBar = function(form) {
-      console.log("Hello")
-      dataService.addBar({
-        name: this.name,
-        neighborhood: this.neighborhood,
-        address: this.address,
-        house: this.hours
-      })
-      .then(function( res ) {
-        console.log(res);
-        console.log(res.body);
-        $state.go("bar", { id: res.data._id})
-      })
+      if (Auth.isLoggedIn()) {
+        dataService.addBar({
+          name: this.name,
+          neighborhood: this.neighborhood,
+          address: this.address,
+          house: this.hours
+        })
+        .then(function( res ) {
+          $state.go("bar", { id: res.data._id})
+        })
+      } else {
+        toastr.error("Must be logged in to create a new bar page");
+      }
     }
   }
 })

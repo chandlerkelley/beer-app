@@ -30,7 +30,7 @@ angular.module("whatsOnTap")
 		</div>
 	</main>
 	`,
-	controller: function (dataService, $stateParams, $state) {
+	controller: function (Auth, toastr, dataService, $stateParams, $state) {
 		this.animate = function(event) {
 			$(event.currentTarget).addClass("anim");
 			setTimeout(() => { $(event.currentTarget).removeClass("anim") }, 750);
@@ -47,11 +47,16 @@ angular.module("whatsOnTap")
 		}
 
 		this.removeBeer = function(index) {
-			var beerIndex = index
-			dataService.removeBeerFromBar($stateParams.id, index)
-			.then( res => {
-				this.beers.splice(beerIndex, 1);
-			})
+			if (Auth.isLoggedIn()) {
+				var beerIndex = index
+				dataService.removeBeerFromBar($stateParams.id, index)
+				.then( res => {
+					this.beers.splice(beerIndex, 1);
+				})	
+			} else {
+				toastr.error("Must be logged in to remove a beer from the tap list");
+			};
+			
 		}
 
 		dataService.getOneBar($stateParams.id)

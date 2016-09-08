@@ -25,7 +25,7 @@ angular.module("whatsOnTap")
     </div>
   </main>
   `,
-  controller: function(dataService, $stateParams, $state) {
+  controller: function(Auth, dataService, $stateParams, $state, toastr) {
     this.page = 0;
     
     this.incPage = function() {
@@ -58,11 +58,15 @@ angular.module("whatsOnTap")
     };
 
     this.addBeer = function(beerId) {
-      dataService.addBeerToBar($stateParams.id, beerId)
-      .then ( res => {
-        console.log("Back at add beer page");
-        $state.go("bar", {id: $stateParams.id})
-      })
+      if(Auth.isLoggedIn()) {
+        dataService.addBeerToBar($stateParams.id, beerId)
+        .then ( res => {
+          $state.go("bar", {id: $stateParams.id});
+        })
+      } else {
+        toastr.error("Must be logged in to add a beer to the tap list")
+      }
+    
     }
   }
 });
