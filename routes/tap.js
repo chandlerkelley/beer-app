@@ -66,6 +66,20 @@ router.put("/addbeer/:bar/:beer", function (req, res, next) {
 	})
 })
 
+router.put("/edit", function(req, res, next){
+	Bar.findById(req.body.id)
+	.then(function(bar) {
+		bar.name = req.body.name;
+		bar.neighborhood = req.body.neighborhood;
+		bar.address = req.body.address;
+		bar.hours = req.body.hours;
+		bar.save()
+		.then (function(savedBar){
+			res.sendStatus(200);
+		})
+	})
+})
+
 router.put("/removebeer/:bar/:beer", function (req, res, next) {
 	var beerIndex = req.params.beer;
 	Bar.findById( req.params.bar )

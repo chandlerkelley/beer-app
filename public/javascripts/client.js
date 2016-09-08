@@ -21,7 +21,10 @@ angular.module("whatsOnTap", ["ui.router"])
 		url: "/bar/:id",
 		template: "<bar></bar>"
 	})
-
+	.state("edit", {
+		url: "/edit/:id",
+		template: "<edit-bar></edit-bar>"
+	})
 	.state("beer", {      //added for beer page
 		url: "/beer/:bar/:beer",
 		template: "<beer></beer>"

@@ -22,6 +22,10 @@ angular.module("whatsOnTap")
 		return $http.post("/tap/addbar/", bar);
 	}
 
+	this.editBar = function(bar){
+		return $http.put("/tap/edit", bar);
+	}
+
 	this.removeBeerFromBar = function (bar, beer) {
 		return $http.put("/tap/removebeer/" + bar + "/" + beer)
 	}
