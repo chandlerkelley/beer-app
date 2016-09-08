@@ -36,7 +36,7 @@ angular.module("whatsOnTap")
 		</div>
 	</main>
 	`,
-	controller: function (dataService, $stateParams, $state) {
+	controller: function (Auth, dataService, $stateParams, $state, toastr) {
 		this.animate = function(event) {
 			$(event.currentTarget).addClass("anim");
 			setTimeout(() => { $(event.currentTarget).removeClass("anim") }, 750);
@@ -53,15 +53,27 @@ angular.module("whatsOnTap")
 		};
 
 		this.editBar = function() {
-			$state.go("edit", {id: $stateParams.id})
+			if (Auth.isLoggedIn()) {
+				$state.go("edit", {id: $stateParams.id})
+			} else {
+				toastr.error("Must be logged in to edit a bar page")
+			}
 		}
 
 		this.showNewBeer = function() {
-			$state.go("addBeer", {id: $stateParams.id})
+			if (Auth.isLoggedIn()) {
+				$state.go("addBeer", {id: $stateParams.id})
+			} else {
+				toastr.error("Must be logged in to add a beer to the tap list")
+			}
 		}
 
 		this.showRemoveBeer = function() {
-			$state.go("removeBeer", {id: $stateParams.id})
+			if (Auth.isLoggedIn()) {
+				$state.go("removeBeer", {id: $stateParams.id})	
+			} else {
+				toastr.error("Must be logged in to remove a beer from the tap list")
+			}
 		}
 
 		dataService.getOneBar($stateParams.id)

@@ -9,15 +9,15 @@ angular.module("whatsOnTap")
       </div>
       <div class="form-part">
         <label class="form-label">Neighborhood</label>
-        <input type="text"  ng-model="$ctrl.neighborhood">
+        <input type="text" ng-model="$ctrl.neighborhood">
       </div>
        <div class="form-part">
         <label class="form-label">Address</label>
-        <input type="text"  ng-model="$ctrl.address">
+        <input type="text" ng-model="$ctrl.address">
       </div>
        <div class="form-part">
         <label class="form-label">Hours</label>
-        <input type="text"  ng-model="$ctrl.hours">
+        <input type="text" ng-model="$ctrl.hours">
       </div>
       <button class="btn form-button" type="submit">Create Bar</button>
     </form>
