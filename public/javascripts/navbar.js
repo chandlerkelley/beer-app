@@ -2,6 +2,7 @@ angular.module("whatsOnTap")
 .component('navbar', {
   template: `
     <header>
+      <img class="icon" src="/../beericon.png">
       <a class="app-name" ui-sref="home">What's On Tap?</a>
       <a ng-hide="$ctrl.Auth.isLoggedIn()" class="nav-link" ui-sref="login">Log In</a>
       <a ng-hide="$ctrl.Auth.isLoggedIn()" class="nav-link" ui-sref="signup">Sign Up</a>

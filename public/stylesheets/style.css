@@ -10,6 +10,13 @@ a {
 	text-decoration: none;
 }
 
+.icon{
+	width:2em;
+	 height:2em;
+	 margin-left: 1em;
+	 color:red;
+}
+
 button:focus {
 	outline: 0;
 }
@@ -33,15 +40,15 @@ input:focus {
 }
 
 :-moz-placeholder {
-	color: #fff;  
+	color: #fff;
 }
 
 ::-moz-placeholder {
-	color: #fff;  
+	color: #fff;
 }
 
-:-ms-input-placeholder {  
-	color: #fff;  
+:-ms-input-placeholder {
+	color: #fff;
 }
 
 header {
@@ -302,15 +309,15 @@ form {
 	}
 
 	:-moz-placeholder {
-		color: #ffc044;  
+		color: #ffc044;
 	}
 
 	::-moz-placeholder {
-		color: #ffc044;  
+		color: #ffc044;
 	}
 
-	:-ms-input-placeholder {  
-		color: #ffc044;  
+	:-ms-input-placeholder {
+		color: #ffc044;
 	}
 
 	.form-part {
