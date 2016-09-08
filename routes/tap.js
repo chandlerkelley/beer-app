@@ -4,7 +4,14 @@ var Bar = require("../models/bar");
 var BreweryDb = require("brewerydb-node");
 var brewdb = new BreweryDb ("eeeb5067eaacf4cde53e19a554420dd6");
 
-// Add error functionality here
+function authenticate(req, res, next) {
+  if (!req.isAuthenticated()) {
+    res.status(401).json( { message: 'Please signup or login.'} );
+  }
+  else {
+    next();
+  }
+}
 
 router.get("/", function(req, res, next) {
 	Bar.find({})
@@ -34,7 +41,7 @@ router.get("/beer/:bar/:beer", function (req, res, next) {
 	})
 })
 
-router.post("/addbar", function(req,res,next){
+router.post("/addbar", authenticate, function(req,res,next){
 	var newBar = new Bar();
 	newBar.name = req.body.name;
 	newBar.neighborhood = req.body.neighborhood;
@@ -46,7 +53,7 @@ router.post("/addbar", function(req,res,next){
 	})
 })
 
-router.put("/addbeer/:bar/:beer", function (req, res, next) {
+router.put("/addbeer/:bar/:beer", authenticate, function (req, res, next) {
 	var barId = req.params.bar;
 	brewdb.beer.getById( req.params.beer , { withBreweries: "Y" }, function(err, selectedBeer) {
 ;		var beerToAdd = {
@@ -66,7 +73,7 @@ router.put("/addbeer/:bar/:beer", function (req, res, next) {
 	})
 })
 
-router.put("/edit", function(req, res, next){
+router.put("/edit", authenticate, function(req, res, next){
 	Bar.findById(req.body.id)
 	.then(function(bar) {
 		bar.name = req.body.name;
@@ -80,7 +87,7 @@ router.put("/edit", function(req, res, next){
 	})
 })
 
-router.put("/removebeer/:bar/:beer", function (req, res, next) {
+router.put("/removebeer/:bar/:beer", authenticate, function (req, res, next) {
 	var beerIndex = req.params.beer;
 	Bar.findById( req.params.bar )
 	.then(function(bar) {
