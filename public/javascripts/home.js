@@ -14,11 +14,11 @@ angular.module("whatsOnTap")
 			<div class="small-button btn" ng-click="$ctrl.animate($event); $ctrl.showAddBar()">
 				<h3>New bar page</h3>
 				<i id="plus" class="material-icons">add</i>
-			</div>		
+			</div>
 			<div class="nav-arrow" ng-class="{hide : !($ctrl.page < $ctrl.bars.length - 8)}" ng-click="$ctrl.incPage(); $ctrl.animate($event)"><i class="material-icons">arrow_forward</i></div>
 		</div>
 		<div class="button-container">
-			<div ng-repeat="bar in $ctrl.bars | filter: $ctrl.search | limitTo:8:$ctrl.page" class="main-button btn" ng-click="$ctrl.animate($event); $ctrl.showBar(bar)">
+			<div ng-repeat="bar in $ctrl.bars | filter: $ctrl.search | orderBy: '-updatedAt' | limitTo:8:$ctrl.page" class="main-button btn" ng-click="$ctrl.animate($event); $ctrl.showBar(bar)">
 				<!-- Make the "1" in the limitTo above a value that comes from the page number -->
 				<i class="material-icons">store_mall_directory</i>
 				<div class="button-content">

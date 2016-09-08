@@ -8,8 +8,8 @@ var BarSchema = new mongoose.Schema({
   hours: { type: String, required: false },
   beers: [],
   user:      { type: mongoose.Schema.Types.ObjectId, ref: 'User'}
-  }
-  // { timestamps: true }  // createdAt, updatedAt
+  },
+  { timestamps: true }  // createdAt, updatedAt
 );
 
 // function date2String(date) {
