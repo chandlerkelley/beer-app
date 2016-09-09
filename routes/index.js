@@ -22,10 +22,10 @@ router.post("/signup", function(req, res, next) {
 	passport.authenticate('local-signup', function(err, user, info) {
 		var error = err || info;
 		if (error) {
-			return res.status(500).json(error);
+			return res.status(401).json(error);
 		}
 		if (!user) {
-			return next(makeError(res, "Something went wrong, please try again", 500));
+			return res.status(500).json({message: "Something went wrong, please try again"});
 		}
 		req.login(user, function(err) {
 			if (err) return res.status(500).json(error);
@@ -42,7 +42,7 @@ router.post("/login", function(req, res, next) {
 			return res.status(401).json(error);
 		}
 		if (!user) {
-		 	return res.status(404).json({message: 'Something went wrong, please try again.'});
+		 	return res.status(404).json({message: 'Email or password is invalid'});
 		}
 		req.login(user, function(err) {
 			if (err) return res.status(401).json(error);

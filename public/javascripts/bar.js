@@ -41,7 +41,7 @@ angular.module("whatsOnTap")
 			$(event.currentTarget).addClass("anim");
 			setTimeout(() => { $(event.currentTarget).removeClass("anim") }, 750);
 		}
-		this.bar = null;
+		this.bar = {name: "Bar not found"};
 		this.beers = null;
 
 		this.showHome = function() {
@@ -78,8 +78,11 @@ angular.module("whatsOnTap")
 
 		dataService.getOneBar($stateParams.id)
 		.then( res => {
-			this.bar = res.data;
-			this.beers = res.data.beers;
+			console.log(res)
+			if (res.data) {
+				this.bar = res.data;
+				this.beers = res.data.beers;
+			}	
 		})
 	}
 })

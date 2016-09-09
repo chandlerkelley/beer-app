@@ -11,8 +11,8 @@ angular.module("whatsOnTap")
 					ng-blur="$ctrl.emailBlur = true"
 					required>
 			</div>
-			<p class="error-message" ng-show="form.email.$error.required && $ctrl.emailBlur">What's your email?</p>
-			<p class="error-message" ng-show="form.email.$error.email && $ctrl.emailBlur">That doesn't look like a valid email</p>
+			<p class="error-message" ng-show="form.email.$error.required && ($ctrl.emailBlur || $ctrl.submitted)">What's your email?</p>
+			<p class="error-message" ng-show="form.email.$error.email && ($ctrl.emailBlur || $ctrl.submitted)">That doesn't look like a valid email</p>
 			
 			<div class="form-part">
 				<label class="form-label">Password</label>
@@ -23,7 +23,7 @@ angular.module("whatsOnTap")
 					ng-minlength="6"
 					required>
 			</div>
-			<p class="error-message" ng-show="(form.password.$error.required || form.password.$error.minlength) && $ctrl.passwordBlur">Password must contain at least 6 characters</p>
+			<p class="error-message" ng-show="(form.password.$error.required || form.password.$error.minlength) && ($ctrl.passwordBlur || $ctrl.submitted)">Password must contain at least 6 characters</p>
 			
 			<div class="form-part">
 				<label>Confirm Password</label>
@@ -34,7 +34,7 @@ angular.module("whatsOnTap")
 					ng-keyup="$ctrl.match = ($ctrl.user.password === $ctrl.user.passwordCheck)"
 					required>
 			</div>
-			<p class="error-message" ng-show="!$ctrl.match && $ctrl.passwordCheckBlur">Passwords must match</p>
+			<p class="error-message" ng-show="!$ctrl.match && ($ctrl.passwordCheckBlur || $ctrl.submitted)">Passwords must match</p>
 
 			<button class="btn form-button" type="submit">Register</button>
 		</form>
@@ -55,7 +55,7 @@ angular.module("whatsOnTap")
 				})
 				.catch( err => {
 					console.log(err);
-					toastr.error("Email is already registered");
+					toastr.error(err.message);
 				})
 			}
 		}

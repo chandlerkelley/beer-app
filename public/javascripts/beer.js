@@ -24,12 +24,14 @@ angular.module("whatsOnTap")
       $state.go("bar", { id: $stateParams.bar })
     }
 
-    this.beer = null;
+    this.beer = {name: "Beer not Found"};
 
     dataService.getOneBeer($stateParams.bar, $stateParams.beer)
     .then( res => {
       console.log(res)
-      this.beer = res.data;
+      if (res.data) {
+        this.beer = res.data;
+      }
     })
   }
 })

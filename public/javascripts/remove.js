@@ -14,7 +14,7 @@ angular.module("whatsOnTap")
 		</div>
 		<div class="add-remove-beer">
 			<div class="small-button btn" ng-click="$ctrl.animate($event); $ctrl.showBar()">
-				<h3>Cancel</h3>
+				<h3>Back to tap list</h3>
 			</div>
 		</div>
 		<div class="button-container">
