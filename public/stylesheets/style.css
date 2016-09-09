@@ -10,12 +10,6 @@ a {
 	text-decoration: none;
 }
 
-.icon{
-	width:2em;
-	 height:2em;
-	 margin-left: 1em;
-}
-
 button:focus {
 	outline: 0;
 }
@@ -52,10 +46,40 @@ input:focus {
 
 header {
 	display: flex;
-	justify-content: flex-end;
-	align-items: center;
+	flex-direction: column;
+	justify-content: space-between;
+	/*align-items: center;*/
 	/*height: 40px;*/
 	background-color: #C5C5c5;
+}
+
+.header-left {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.icon{
+	width:2em;
+	 height:2em;
+	 margin-left: 1em;
+}
+
+.nav-drop {
+	display: inline-block;
+	border-radius: 12px;
+}
+
+.header-right {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	background-color: #fff;
+	/*transition: display 1s linear;*/
+}
+
+.nav-hide {
+	display: none;
 }
 
 .app-name {
@@ -66,12 +90,12 @@ header {
 .nav-link {
 	/*margin-right: 40px;*/
 	padding: 15px 20px;
+	color: #C5C5c5;
 }
 
 .nav-link:hover {
-	/*text-decoration: underline;*/
-	background-color: white;
-	color: #c5c5c5;
+	background-color: #c5c5c5;
+	color: #fff;
 }
 
 main {
@@ -302,6 +326,33 @@ form {
 	}
 	100% {
 		background: rgba(255,255,255,0);
+	}
+}
+
+@media only screen and (min-width: 401px) {
+	header {
+		flex-direction: row;
+	}
+
+	.nav-drop {
+		display: none;
+	}
+
+	.header-right {
+		background-color: #C5C5c5;
+	}
+
+	.nav-hide {
+		display: flex;
+	}
+
+	.nav-link {
+		color: #fff;
+	}
+
+	.nav-link:hover {
+	background-color: white;
+	color: #c5c5c5;
 	}
 }
 
