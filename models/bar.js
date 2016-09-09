@@ -7,7 +7,7 @@ var BarSchema = new mongoose.Schema({
   address: { type: String, required: false },
   hours: { type: String, required: false },
   beers: [],
-  user:      { type: mongoose.Schema.Types.ObjectId, ref: 'User'}
+  lastEditedBy:      { type: mongoose.Schema.Types.ObjectId, ref: 'User'}
   },
   { timestamps: true }  // createdAt, updatedAt
 );

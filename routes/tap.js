@@ -47,7 +47,7 @@ router.post("/addbar", authenticate, function(req,res,next){
 	newBar.neighborhood = req.body.neighborhood;
 	newBar.address = req.body.address;
 	newBar.hours = req.body.hours;
-	newBar.user = req.user.id;     //added to see who added new bar
+	newBar.lastEditedBy = req.user.id;     //added to see who added new bar
 		console.log(req.user.local.email);
 	newBar.save()
 	.then(function(savedBar) {
@@ -82,7 +82,7 @@ router.put("/edit", authenticate, function(req, res, next){
 		bar.neighborhood = req.body.neighborhood;
 		bar.address = req.body.address;
 		bar.hours = req.body.hours;
-		bar.user = req.user.id;       //added to see who updated last
+		bar.lastEditedBy = req.user.id;       //added to see who updated last
 		console.log(req.user.local.email);
 		bar.save()
 		.then (function(savedBar){
