@@ -5,22 +5,36 @@ angular.module("whatsOnTap")
 		<form name="form" ng-submit="$ctrl.signup(form)" novalidate>
 			<div class="form-part">
 				<label class="form-label">Email</label>
-				<input type="email" name="email" ng-model="$ctrl.user.email" ng-blur="$ctrl.emailBlur = true" required mongoose-error>
+				<input type="email"
+					name="email"
+					ng-model="$ctrl.user.email"
+					ng-blur="$ctrl.emailBlur = true"
+					required>
 			</div>
 			<p ng-show="form.email.$error.required && $ctrl.emailBlur">What's your email?</p>
 			<p ng-show="form.email.$error.email && $ctrl.emailBlur">That doesn't look like a valid email</p>
 			
 			<div class="form-part">
 				<label class="form-label">Password</label>
-				<input type="password" name="password" ng-model="$ctrl.user.password" ng-blur="$ctrl.passwordBlur = true" ng-minlength="6" required>
+				<input type="password"
+					name="password"
+					ng-model="$ctrl.user.password"
+					ng-blur="$ctrl.passwordBlur = true"
+					ng-minlength="6"
+					required>
 			</div>
 			<p ng-show="(form.password.$error.required || form.password.$error.minlength) && $ctrl.passwordBlur">Password must contain at least 6 characters</p>
 			
 			<div class="form-part">
 				<label>Confirm Password</label>
-				<input type="password" name="passwordCheck" ng-model="$ctrl.user.passwordCheck" ng-blur="$ctrl.passwordCheckBlur = true" match="$ctrl.user.password" required>
+				<input type="password"
+					name="passwordCheck"
+					ng-model="$ctrl.user.passwordCheck"
+					ng-blur="$ctrl.passwordCheckBlur = true"
+					ng-keyup="$ctrl.match = ($ctrl.user.password === $ctrl.user.passwordCheck)"
+					required>
 			</div>
-			<p ng-show="form.passwordCheck.$error.match && $ctrl.passwordCheckBlur">Passwords must match</p>
+			<p ng-show="!$ctrl.match && $ctrl.passwordCheckBlur">Passwords must match</p>
 
 			<button class="btn form-button" type="submit">Register</button>
 		</form>
