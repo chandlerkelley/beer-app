@@ -20,16 +20,16 @@ router.get("/", function(req, res, next) {
 // Sign up
 router.post("/signup", function(req, res, next) {
 	passport.authenticate('local-signup', function(err, user, info) {
-			var error = err || info;
-			if (error) {
-			return res.status(401).json(error);
+		var error = err || info;
+		if (error) {
+			return res.status(500).json(error);
 		}
 		if (!user) {
 			return next(makeError(res, "Something went wrong, please try again", 500));
 		}
 		req.login(user, function(err) {
-			if (err) return res.status(401).json(error);
-			res.json( { email: user.local.email }); // This is not returning email
+			if (err) return res.status(500).json(error);
+			res.json( { email: user.local.email });
 		});
 	})(req, res, next);
 });
