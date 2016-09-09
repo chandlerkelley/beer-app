@@ -65,15 +65,24 @@ router.put("/addbeer/:bar/:beer", authenticate, function (req, res, next) {
 			style: selectedBeer.style.shortName
 		};
 		Bar.findById( barId , function(err, bar) {
+			var oldLength = bar.beers.length;
 			console.log(bar);
-			bar.beers.push(beerToAdd);
+			bar.beers.addToSet(beerToAdd)
 			bar.save()
+			var newLength = bar.beers.length;
+      var changed;
+			if (oldLength === newLength){
+            changed = false;
+          } else {changed = true;}
+
+		})
 			.then(function(bar) {
-				res.json(bar);
-			})
+				res.json(bar)
+				});
+
 		})
 	})
-})
+
 
 router.put("/edit", authenticate, function(req, res, next){
 	Bar.findById(req.body.id)
