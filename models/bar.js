@@ -28,9 +28,4 @@ var BarSchema = new mongoose.Schema({
 //   return date2String(this.updatedAt);
 // };
 
-// TodoSchema.methods.toString = function() {
-//   let status = this.completed ? 'completed' : 'not completed';
-//   return `Todo: ${this.title} owned by ${this.user.local.email} is ${status}.`;
-// };
-
 module.exports = mongoose.model('Bar', BarSchema);
