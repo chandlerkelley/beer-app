@@ -11,8 +11,8 @@ angular.module("whatsOnTap")
 					ng-blur="$ctrl.emailBlur = true"
 					required>
 			</div>
-			<p ng-show="form.email.$error.required && $ctrl.emailBlur">What's your email?</p>
-			<p ng-show="form.email.$error.email && $ctrl.emailBlur">That doesn't look like a valid email</p>
+			<p class="error-message" ng-show="form.email.$error.required && $ctrl.emailBlur">What's your email?</p>
+			<p class="error-message" ng-show="form.email.$error.email && $ctrl.emailBlur">That doesn't look like a valid email</p>
 			
 			<div class="form-part">
 				<label class="form-label">Password</label>
@@ -23,7 +23,7 @@ angular.module("whatsOnTap")
 					ng-minlength="6"
 					required>
 			</div>
-			<p ng-show="(form.password.$error.required || form.password.$error.minlength) && $ctrl.passwordBlur">Password must contain at least 6 characters</p>
+			<p class="error-message" ng-show="(form.password.$error.required || form.password.$error.minlength) && $ctrl.passwordBlur">Password must contain at least 6 characters</p>
 			
 			<div class="form-part">
 				<label>Confirm Password</label>
@@ -34,7 +34,7 @@ angular.module("whatsOnTap")
 					ng-keyup="$ctrl.match = ($ctrl.user.password === $ctrl.user.passwordCheck)"
 					required>
 			</div>
-			<p ng-show="!$ctrl.match && $ctrl.passwordCheckBlur">Passwords must match</p>
+			<p class="error-message" ng-show="!$ctrl.match && $ctrl.passwordCheckBlur">Passwords must match</p>
 
 			<button class="btn form-button" type="submit">Register</button>
 		</form>
@@ -45,17 +45,19 @@ angular.module("whatsOnTap")
 		this.signup = function(form) {
 			this.submitted = true;
 
-			return Auth.createUser({
+			if(form.$valid && this.match) {
+				return Auth.createUser({
 				email: this.user.email,
 				password: this.user.password
-			})
-			.then(() => {
-				$state.go("home");
-			})
-			.catch( err => {
-				console.log(err);
-				toastr.error("Something went wrong");
-			})
+				})
+				.then(() => {
+					$state.go("home");
+				})
+				.catch( err => {
+					console.log(err);
+					toastr.error("Email is already registered");
+				})
+			}
 		}
 	}
 })

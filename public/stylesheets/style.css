@@ -274,8 +274,8 @@ form {
 	font-size: 15px;
 }
 
-.error-container {
-	/*width: 150px;*/
+.error-message {
+	color: #F00;
 }
 
 .instructions {
