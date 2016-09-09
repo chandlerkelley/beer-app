@@ -65,10 +65,12 @@ router.put("/addbeer/:bar/:beer", authenticate, function (req, res, next) {
 			style: selectedBeer.style.shortName
 		};
 		Bar.findById( barId , function(err, bar) {
+			//check for match before you update the beers array
 			console.log(bar);
 			bar.beers.push(beerToAdd);
 			bar.save()
 			.then(function(bar) {
+				//res is different depending on if match is found
 				res.json(bar);
 			})
 		})

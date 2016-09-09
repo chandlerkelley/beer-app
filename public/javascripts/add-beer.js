@@ -7,10 +7,10 @@ angular.module("whatsOnTap")
         <h2 class="search-title">search by a beer</h2>
         <div id="small-search" class="search-bar">
           <input class="small-search" type="text" ng-model="$ctrl.beerName" placeholder="Search for a beer" ng-focus="$ctrl.growBar($event)" ng-blur="$ctrl.shrinkBar($event)">
-          <button class="btn form-button" type="submit">Search</button> 
+          <button class="btn form-button" type="submit">Search</button>
         </div>
       </div>
-    </form> 
+    </form>
     <div class="bar-nav">
       <div class="nav-arrow" ng-class="{hide : !($ctrl.page > 0)}" ng-click="$ctrl.decPage(); $ctrl.animate($event)"><i class="material-icons">arrow_back</i></div>
       <h2 class="instructions">Click on beer to add<h2>
@@ -27,7 +27,7 @@ angular.module("whatsOnTap")
   `,
   controller: function(Auth, dataService, $stateParams, $state, toastr) {
     this.page = 0;
-    
+
     this.incPage = function() {
       this.page+=6;
     };
@@ -61,12 +61,13 @@ angular.module("whatsOnTap")
       if(Auth.isLoggedIn()) {
         dataService.addBeerToBar($stateParams.id, beerId)
         .then ( res => {
+          //response will be different if beer was a duplicate or not; code must recognize which response it gets
           $state.go("bar", {id: $stateParams.id});
         })
       } else {
         toastr.error("Must be logged in to add a beer to the tap list")
       }
-    
+
     }
   }
 });
