@@ -75,11 +75,12 @@ header {
 	align-items: center;
 	justify-content: flex-end;
 	background-color: #fff;
-	/*transition: display 1s linear;*/
+	transition: height 1s;
 }
 
 .nav-hide {
 	display: none;
+	height: 0;
 }
 
 .app-name {
@@ -344,6 +345,7 @@ form {
 
 	.nav-hide {
 		display: flex;
+		height: auto;
 	}
 
 	.nav-link {
