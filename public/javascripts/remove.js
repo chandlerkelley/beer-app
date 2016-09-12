@@ -31,9 +31,10 @@ angular.module("whatsOnTap")
 	</main>
 	`,
 	controller: function (Auth, toastr, dataService, $stateParams, $state) {
+		var that = this;
 		this.animate = function(event) {
 			$(event.currentTarget).addClass("anim");
-			setTimeout(() => { $(event.currentTarget).removeClass("anim") }, 750);
+			setTimeout(function() { $(event.currentTarget).removeClass("anim") }, 750);
 		}
 		this.bar = null;
 		this.beers = null;
@@ -50,8 +51,8 @@ angular.module("whatsOnTap")
 			if (Auth.isLoggedIn()) {
 				var beerIndex = index
 				dataService.removeBeerFromBar($stateParams.id, index)
-				.then( res => {
-					this.beers.splice(beerIndex, 1);
+				.then( function(res) {
+					that.beers.splice(beerIndex, 1);
 				})	
 			} else {
 				toastr.error("Must be logged in to remove a beer from the tap list");
@@ -60,10 +61,10 @@ angular.module("whatsOnTap")
 		}
 
 		dataService.getOneBar($stateParams.id)
-		.then( res => {
+		.then(function(res) {
 			console.log(res)
-			this.bar = res.data;
-			this.beers = res.data.beers;
+			that.bar = res.data;
+			that.beers = res.data.beers;
 		})
 	}
 })

@@ -21,7 +21,7 @@ angular.module("whatsOnTap")
     
     this.logout = function() {
       Auth.logout()
-      .then( res => {
+      .then( function(res) {
         $state.go('home');
       });
     };
@@ -32,7 +32,7 @@ angular.module("whatsOnTap")
 
     this.animate = function(event) {
       $(event.currentTarget).addClass("anim");
-      setTimeout(() => { $(event.currentTarget).removeClass("anim") }, 750);
+      setTimeout(function() { $(event.currentTarget).removeClass("anim") }, 750);
     }
   }
 });

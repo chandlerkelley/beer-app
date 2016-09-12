@@ -5,10 +5,10 @@ angular.module("whatsOnTap")
 
   this.getCurrentUser = function() {
     return $http.get('/me')
-    .then(res => {
+    .then(function(res) {
       currentUser = res.data;
     })
-    .catch(err => {
+    .catch(function(err) {
       console.log('ERROR:', err);
       return $q.reject(err.data);
     });
@@ -24,10 +24,10 @@ angular.module("whatsOnTap")
 
   this.login = function(credentials) {
     return $http.post('/login', credentials)
-    .then( res => {
+    .then(function(res) {
       currentUser = res.data;
     })
-    .catch(err => {
+    .catch(function(err) {
       console.log('ERROR:', err);
       return $q.reject(err.data);
     });
@@ -35,7 +35,7 @@ angular.module("whatsOnTap")
 
   this.logout = function() {
     return $http.get('/logout')
-    .then( res => {
+    .then(function(res) {
       currentUser = null;
     });
   };
@@ -44,10 +44,10 @@ angular.module("whatsOnTap")
 
   this.createUser = function(user) {
     return $http.post('/signup', user)
-    .then(res => {
+    .then(function(res) {
       currentUser = res.data;
     })
-    .catch(err => {
+    .catch(function(err){
       console.log('ERROR:', err);
       return $q.reject(err.data);
     });

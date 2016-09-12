@@ -26,6 +26,7 @@ angular.module("whatsOnTap")
   </main>
   `,
   controller: function(Auth, dataService, $stateParams, $state, toastr) {
+    var that = this;
     this.page = 0;
 
     this.incPage = function() {
@@ -50,9 +51,9 @@ angular.module("whatsOnTap")
 
     this.searchBeer = function(form) {
       dataService.searchApi(this.beerName)
-      .then( res => {
+      .then( function(res) {
         console.log(res.data);
-        this.foundBeers = res.data;
+        that.foundBeers = res.data;
       })
       this.searched=true;
     };
@@ -60,7 +61,12 @@ angular.module("whatsOnTap")
     this.addBeer = function(beerId) {
       if(Auth.isLoggedIn()) {
         dataService.addBeerToBar($stateParams.id, beerId)
+
         .then ( res => {
+
+        .then (function(res) {
+          //response will be different if beer was a duplicate or not; code must recognize which response it gets
+
           $state.go("bar", {id: $stateParams.id});
         })
       } else {

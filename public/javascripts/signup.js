@@ -50,10 +50,10 @@ angular.module("whatsOnTap")
 				email: this.user.email,
 				password: this.user.password
 				})
-				.then(() => {
+				.then(function() {
 					$state.go("home");
 				})
-				.catch( err => {
+				.catch(function(err) {
 					console.log(err);
 					toastr.error(err.message);
 				})

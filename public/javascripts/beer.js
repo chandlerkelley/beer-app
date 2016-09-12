@@ -15,9 +15,10 @@ angular.module("whatsOnTap")
   </main>
   `,
   controller: function (dataService, $stateParams, $state) {
+    var that = this;
     this.animate = function(event) {
       $(event.currentTarget).addClass("anim");
-      setTimeout(() => { $(event.currentTarget).removeClass("anim") }, 750);
+      setTimeout(function() { $(event.currentTarget).removeClass("anim") }, 750);
     }
 
     this.goBack = function() {
@@ -27,10 +28,10 @@ angular.module("whatsOnTap")
     this.beer = {name: "Beer not Found"};
 
     dataService.getOneBeer($stateParams.bar, $stateParams.beer)
-    .then( res => {
+    .then( function(res) {
       console.log(res)
       if (res.data) {
-        this.beer = res.data;
+        that.beer = res.data;
       }
     })
   }
