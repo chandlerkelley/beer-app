@@ -21,6 +21,7 @@ angular.module("whatsOnTap")
   </main>
   `,
   controller: function($state, dataService, $stateParams) {
+    var that = this;
     this.editBar = function(form) {
       dataService.editBar({
         id: $stateParams.id,
@@ -35,11 +36,11 @@ angular.module("whatsOnTap")
     };
 
     dataService.getOneBar($stateParams.id)
-    .then(res => {
-      this.name = res.data.name;
-      this.neighborhood = res.data.neighborhood;
-      this.address = res.data.address;
-      this.hours = res.data.hours;
+    .then( function(res) {
+      that.name = res.data.name;
+      that.neighborhood = res.data.neighborhood;
+      that.address = res.data.address;
+      that.hours = res.data.hours;
   })
 
   }

@@ -32,6 +32,7 @@ angular.module("whatsOnTap")
 	</main>
 	`,
 	controller: function (dataService, $state, Auth, toastr) {
+		var that = this;
 		this.page = 0;
 		this.incPage = function() {
 			this.page+=8;
@@ -42,7 +43,7 @@ angular.module("whatsOnTap")
 
 		this.animate = function(event) {
 			$(event.currentTarget).addClass("anim");
-			setTimeout(() => { $(event.currentTarget).removeClass("anim") }, 750);
+			setTimeout(function() { $(event.currentTarget).removeClass("anim") }, 750);
 		}
 
 		this.growBar = function(event) {
@@ -68,8 +69,8 @@ angular.module("whatsOnTap")
 		this.bars = null;
 
 		dataService.getBars()
-		.then( res => {
-			this.bars = res.data;
+		.then(function(res) {
+			that.bars = res.data;
 		})
 	}
 })

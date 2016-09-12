@@ -37,9 +37,10 @@ angular.module("whatsOnTap")
 	</main>
 	`,
 	controller: function (Auth, dataService, $stateParams, $state, toastr) {
+		var that = this;
 		this.animate = function(event) {
 			$(event.currentTarget).addClass("anim");
-			setTimeout(() => { $(event.currentTarget).removeClass("anim") }, 750);
+			setTimeout(function(){ $(event.currentTarget).removeClass("anim") }, 750);
 		}
 		this.bar = {name: "Bar not found"};
 		this.beers = null;
@@ -77,11 +78,11 @@ angular.module("whatsOnTap")
 		}
 
 		dataService.getOneBar($stateParams.id)
-		.then( res => {
+		.then(function(res) {
 			console.log(res)
 			if (res.data) {
-				this.bar = res.data;
-				this.beers = res.data.beers;
+				that.bar = res.data;
+				that.beers = res.data.beers;
 			}	
 		})
 	}
