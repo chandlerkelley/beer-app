@@ -23,6 +23,6 @@ for an unlisted bar.
 ![Wireframe](public/images/wireframe.jpg)
 
 ##Links
-*[Deployed App](http://whats-on-tap.herokuapp.com/)
-*[GitHub](https://github.com/chandlerkelley/whats-on-tap)
-*[Trello Board](https://trello.com/b/vIkrXd7b/beer-app)
+* [Deployed App](http://whats-on-tap.herokuapp.com/)
+* [GitHub](https://github.com/chandlerkelley/whats-on-tap)
+* [Trello Board](https://trello.com/b/vIkrXd7b/beer-app)
