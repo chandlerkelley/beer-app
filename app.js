@@ -14,7 +14,7 @@ var tap = require("./routes/tap");
 
 var app = express();
 
-mongoose.connect("mongodb://localhost/beerApp")
+mongoose.connect("mongodb://whatsontap:beerme@ds019766.mlab.com:19766/beerapp")
 
 //added for passport
 app.use(session({ secret: 'WDI Rocks!',
