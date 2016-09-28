@@ -22,6 +22,7 @@ input {
 	text-indent-right: 40px;
 	width: 100%;
 	border: 2px solid #fff;
+	background: #fff;
 }
 
 input:focus {
