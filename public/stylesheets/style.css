@@ -159,6 +159,10 @@ main {
 	cursor: pointer;
 }
 
+.pointer{
+	cursor: pointer;
+}
+
 .button-container {
 	display: flex;
 	justify-content: center;

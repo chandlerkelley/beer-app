@@ -4,7 +4,7 @@ angular.module("whatsOnTap")
   <main>
     <h1 class="info-name">{{$ctrl.beer.name}}</h1>
     <div class="info-header">
-      <div ng-click="$ctrl.goBack()"><i class="material-icons">arrow_back</i></div>
+      <div class="pointer" ng-click="$ctrl.goBack()"><i class="material-icons">arrow_back</i></div>
       <div class="info-data">
         <p class="info-para">Brewery: {{$ctrl.beer.brewery}}</p>
         <p class="info-para">ABV: {{$ctrl.beer.abv}}</p>

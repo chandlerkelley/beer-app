@@ -4,13 +4,13 @@ angular.module("whatsOnTap")
 	<main>
 		<h1 class="info-name">{{$ctrl.bar.name}}</h1>
 		<div class="info-header">
-			<div ng-click="$ctrl.showHome()"><i class="material-icons">arrow_back</i></div>
+			<div class="pointer" ng-click="$ctrl.showHome()"><i class="material-icons">arrow_back</i></div>
 			<div class="info-data">
 				<p class="info-para">{{$ctrl.bar.neighborhood}}</p>
 				<p class="info-para">{{$ctrl.bar.hours}}</p>
 				<p class="info-para">{{$ctrl.bar.address}}</p>
 			</div>
-			<div ng-click="$ctrl.editBar()"><i class="material-icons">edit</i></div>
+			<div class="pointer" ng-click="$ctrl.editBar()"><i class="material-icons">edit</i></div>
 		</div>
 		<div class="add-remove-beer">
 			<div class="small-button btn" ng-click="$ctrl.animate($event); $ctrl.showNewBeer()">
